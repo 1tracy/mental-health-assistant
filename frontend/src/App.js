@@ -7,11 +7,12 @@ function App() {
   const [userVal, setUserVal] = useState('');
   const [passwordVal, setPasswordVal] = useState('');
   const [postId, setPostId] = useState(0);
+  const [apiResponse, setapiResponse] = useState("");
   const userInput = useRef('');
   const passwordInput = useRef('');
 
   useEffect(() => {
-    fetch('/api/hello').then(res => res.json()).then(data => {
+    fetch('http://localhost:5000/api/hello').then(res => res.json()).then(data => {
       setPlaceholder(data.result);
     });
   }, []);
@@ -22,8 +23,10 @@ function App() {
 		  headers: {'Content-Type': 'application/json'},
 		  body: JSON.stringify({username: userVal, password: passwordVal})
 	  };
-	  fetch('/api/login', requestData)
-	  	.then(response=>response.json());
+	  fetch('http://localhost:5000/api/login', requestData)
+	  	.then(response=>response.json())
+		.then(data => setapiResponse(data.response));
+	  console.log(apiResponse);
   }, [postId])
 
   const submitCredentials = () => {
@@ -77,6 +80,7 @@ function App() {
 									<input type="text" ref={userInput} onChange={event => setUserVal(event.target.value)}/>
 									<input type="text" ref={passwordInput} onChange={event => setPasswordVal(event.target.value)}/>
 									<button type="button" onClick={submitCredentials}>Login/Create Account</button>
+									<p>{apiResponse}</p>
 								</div>
 							</section>
 

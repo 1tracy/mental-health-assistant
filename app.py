@@ -8,6 +8,7 @@ from flask_migrate import Migrate
 
 app = Flask(__name__)
 CORS(app)
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://{user}:{passwd}@{host}:{port}/{table}'.format(
     user=os.getenv('POSTGRES_USER'),
     passwd=os.getenv('POSTGRES_PASSWORD'),
@@ -34,7 +35,6 @@ class UserModel(db.Model):
     def __repr__(self):
         return f"<User {self.username}>"
 
-
 @app.route('/api/register', methods=('GET', 'POST'))
 def register():
     if request.method == 'POST':
@@ -54,13 +54,16 @@ def register():
             new_user = UserModel(username, generate_password_hash(password))
             db.session.add(new_user)
             db.session.commit()
-            return f"User {username} created successfully"
+            return {"response" : f"User {username} created successfully"}
         else:
-            return error, 418
+            return {"response" : error}
 
 
 @app.route('/api/login', methods=('GET', 'POST'))
 def login():
+    return {"response" : "Login Successful"}
+
+    # the rest of the code does not run
     if request.method == 'POST':
         content = request.json
         username = content['username']
@@ -74,9 +77,9 @@ def login():
             error = 'Incorrect password.'
 
         if error is None:
-            return "Login Successful", 200
+            return {"response": "Login Successful"}
         else:
-            return error, 418
+            return {"response": error}
 
 
 
