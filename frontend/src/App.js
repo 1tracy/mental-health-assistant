@@ -38,7 +38,7 @@ function App() {
 		<title>Strongly Typed by HTML5 UP</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="frontend/src/App.css" />
 	</head>
 	<body class="homepage is-preload">
 		<div id="page-wrapper">
@@ -50,7 +50,11 @@ function App() {
 
 							<nav id="nav">
 								<ul>
-									<li><a class="icon solid fa-home" href="index.html"><span>Introduction</span></a></li>
+									<li><a class="icon solid fa-home" href="index.html"><span>Home</span></a></li>
+									{/* This is an extra dropdown tab, don't think we need it rn. 
+									We can add if we need more pages or have a page that branches
+									-Angelyn
+									
 									<li>
 										<a href="#" class="icon fa-chart-bar"><span>Dropdown</span></a>
 										<ul>
@@ -67,10 +71,11 @@ function App() {
 											</li>
 											<li><a href="#">Veroeros feugiat</a></li>
 										</ul>
-									</li>
-									<li><a class="icon solid fa-cog" href="left-sidebar.html"><span>Left Sidebar</span></a></li>
-									<li><a class="icon solid fa-retweet" href="right-sidebar.html"><span>Right Sidebar</span></a></li>
-									<li><a class="icon solid fa-sitemap" href="no-sidebar.html"><span>No Sidebar</span></a></li>
+									</li> */}
+									<li><a class="icon solid fa-cog" href="left-sidebar.html"><span>About</span></a></li>
+									<li><a class="icon solid fa-retweet" href="right-sidebar.html"><span>Journal</span></a></li>
+									<li><a class="icon solid fa-retweet" href="right-sidebar.html"><span>Resources</span></a></li>
+									<li><a class="icon solid fa-sitemap" href="no-sidebar.html"><span>Login</span></a></li>
 								</ul>
 							</nav>
 
