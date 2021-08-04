@@ -1,8 +1,14 @@
 # Mental Health Assistant
 
+## Pre-requisites
+- git
+- python 3
+- pip
+- npm
+
 ## Installation
 
-Install python3 and pip
+Clone and cd to repo
 
 Create and python virtual environment
 ```bash
@@ -41,10 +47,10 @@ Start flask development server
 ```bash
 $ flask run
 ```
-$ cd frontend
 
-Install node-modules
+Install node_modules
 ```bash
+$ cd frontend
 $ npm install
 ```
 Run react
