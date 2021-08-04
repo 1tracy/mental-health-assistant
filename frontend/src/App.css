@@ -1,3 +1,4 @@
+@import url("fontawesome-all.min.css");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Arvo:700");
 
 /*
@@ -2212,7 +2213,7 @@ button.alt:active,
   box-shadow: inset 0px -8px 0px 0px #fff, inset 0px 8px 0px 0px #fff;
   position: relative;
   text-transform: uppercase;
-  background: url("");
+  background: url("images/banner.jpg");
   background-size: cover;
   padding: 10em 0;
 }
@@ -2243,7 +2244,7 @@ button.alt:active,
   width: 35px;
   height: 141px;
   margin-top: -70px;
-  background: url("");
+  background: url("images/bracket.svg");
   opacity: 0.15;
 }
 
