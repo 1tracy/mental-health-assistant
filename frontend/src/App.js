@@ -1,15 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
   const [placeholder, setPlaceholder] = useState('Hi');
+  const [userVal, setUserVal] = useState('');
+  const [passwordVal, setPasswordVal] = useState('');
+  const [postId, setPostId] = useState(0);
+  const userInput = useRef('');
+  const passwordInput = useRef('');
 
   useEffect(() => {
     fetch('/hello').then(res => res.json()).then(data => {
       setPlaceholder(data.result);
     });
   }, []);
+
+  useEffect(() => {
+	  const requestData = {
+		  method: 'POST',
+		  headers: {'Content-Type': 'application/json'},
+		  body: JSON.stringify({username: userVal, password: passwordVal})
+	  };
+	  fetch('/login', requestData)
+	  	.then(response=>response.json());
+  }, [postId])
+
+  const submitCredentials = () => {
+	  userInput.current.value='';
+	  passwordInput.current.value='';
+	  console.log(userVal, passwordVal);
+	  setPostId(postId + 1);
+  }
 /*
   return (
     <div className="App">
@@ -43,10 +65,20 @@ function App() {
 	<body class="homepage is-preload">
 		<div id="page-wrapper">
 				<section id="header">
+					
 					<div class="container">
 
-							<h1 id="logo"><a href="index.html">Strongly Typed</a></h1>
-							<p>A responsive HTML5 site template. Manufactured by HTML5 UP.</p>
+							<h1 id="logo"><a href="index.html">Mental Health Assistant</a></h1>
+							<p>A project by Angelyn, Tracy, and Vi.</p>
+							
+							<section id="login">
+								<br/>
+								<div class="container">
+									<input type="text" ref={userInput} onChange={event => setUserVal(event.target.value)}/>
+									<input type="text" ref={passwordInput} onChange={event => setPasswordVal(event.target.value)}/>
+									<button type="button" onClick={submitCredentials}>Login/Create Account</button>
+								</div>
+							</section>
 
 							<nav id="nav">
 								<ul>
