@@ -11,7 +11,7 @@ function App() {
   const passwordInput = useRef('');
 
   useEffect(() => {
-    fetch('/hello').then(res => res.json()).then(data => {
+    fetch('/api/hello').then(res => res.json()).then(data => {
       setPlaceholder(data.result);
     });
   }, []);
@@ -22,7 +22,7 @@ function App() {
 		  headers: {'Content-Type': 'application/json'},
 		  body: JSON.stringify({username: userVal, password: passwordVal})
 	  };
-	  fetch('/login', requestData)
+	  fetch('/api/login', requestData)
 	  	.then(response=>response.json());
   }, [postId])
 
