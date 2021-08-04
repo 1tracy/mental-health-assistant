@@ -38,8 +38,9 @@ class UserModel(db.Model):
 @app.route('/api/register', methods=('GET', 'POST'))
 def register():
     if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
+        content = request.json
+        username = content['username']
+        password = content['password']
         error = None
 
         if not username:
@@ -57,15 +58,13 @@ def register():
         else:
             return error, 418
 
-    # TODO: Return a restister page
-    return "Register Page not yet implemented", 501
-
 
 @app.route('/api/login', methods=('GET', 'POST'))
 def login():
     if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
+        content = request.json
+        username = content['username']
+        password = content['password']
         error = None
         user = UserModel.query.filter_by(username=username).first()
 
@@ -79,8 +78,6 @@ def login():
         else:
             return error, 418
 
-    # TODO: Return a login page
-    return "Login Page not yet implemented", 501
 
 
 @app.route('/hello')
@@ -94,3 +91,8 @@ def say_hello_world():
 #
 #     print(content['username'], content['password'])
 #     return (content['username'], content['password'])
+
+
+# Register + login Page:
+# rn: they are on port 5000.
+# ideally: they should be on port 3000.
