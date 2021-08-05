@@ -61,7 +61,6 @@ def register():
 
 @app.route('/api/login', methods=('GET', 'POST'))
 def login():
-    return {"response" : "Login Successful"}
 
     # the rest of the code does not run
     if request.method == 'POST':
@@ -69,8 +68,12 @@ def login():
         username = content['username']
         password = content['password']
         error = None
-        user = UserModel.query.filter_by(username=username).first()
+        
+        print([username, password])
+        # return {"response" : "Login Successful"}
 
+        #user = UserModel.query.filter_by(username=username).first()
+        user = None
         if user is None:
             error = 'Incorrect username.'
         elif not check_password_hash(user.password, password):

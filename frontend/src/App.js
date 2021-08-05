@@ -1,8 +1,37 @@
 import React, { useState, useEffect, useRef } from 'react';
 //import logo from './logo.svg';
 import './App.css';
+import Nav from './components/Nav';
+import Help from './components/Help';
+import Journal from './components/Journal';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 function App() {
+	return (
+		<div className="app">
+			<body class="homepage is-preload">
+				<div id="page-wrapper">
+					<section id="header">
+						<div class="container">
+							<nav id="nav">
+								<Router>
+									<Nav />
+										<Switch>
+											<Route exact path="/journal" component={Journal} />
+											<Route exact path="/resources" component={Help} />
+											<Route path="/" exact component={Home} />
+										</Switch>
+								</Router>
+							</nav>
+						</div>
+					</section>
+				</div>
+			</body>
+		</div>
+	);
+}
+
+function Home() {
   const [placeholder, setPlaceholder] = useState('Hi');
   const [userVal, setUserVal] = useState('');
   const [passwordVal, setPasswordVal] = useState('');
@@ -83,7 +112,8 @@ function App() {
 									<p>{apiResponse}</p>
 								</div>
 							</section>
-
+							
+							
 							<nav id="nav">
 								<ul>
 									<li><a class="icon solid fa-home" href="index.html"><span>Home</span></a></li>
@@ -114,7 +144,6 @@ function App() {
 									<li><a class="icon solid fa-sitemap" href="no-sidebar.html"><span>Login</span></a></li>
 								</ul>
 							</nav>
-
 					</div>
 				</section>
 				<section id="features">
