@@ -103,7 +103,9 @@ def say_hello_world():
 # retrieve journal data
 @app.route('/api/logs')
 def get_logs():
-    date = request.args.get('date') # date = Month-Day format "August-3"
+    date1 = request.args.get('date') # date = Month-Day format "username-August-3"
+    date = date1.split('-', 1)[1]
+    user = date1.split('-', 1)[0]
     # retrieve journal logs associated with that date here
     sample_response = {
         'August-2' : 'Sample Journal Log \n Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
@@ -115,6 +117,8 @@ def get_logs():
 # retrieve journal dates
 @app.route('/api/dates')
 def get_dates():
+    user = request.args.get('user')
+    print(user)
     date_column = ["August 4", "August 3", "August 2"]
     output = []
     for date in date_column:
@@ -126,5 +130,6 @@ def get_dates():
 def save_today():
     content = request.json
     print(content['logs'])
+    print(content['user'])
     # save content['logs'] to db
     return {'response': 'success'}
