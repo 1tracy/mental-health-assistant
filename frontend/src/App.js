@@ -3,8 +3,15 @@ import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import Nav from './components/Nav';
 import Help from './components/Help';
-import Journal from './components/Journal';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
+
+import Image1 from "./images/pic01.jpg";
+import Image2 from "./images/pic02.jpg";
+import Image3 from "./images/pic03.jpg";
+import Image4 from "./images/pic04.jpg";
+import Image5 from "./images/pic05.jpg";
+import Image6 from "./images/pic06.jpg";
+import Image7 from "./images/pic07.jpg";
 
 function App() {
 	return (
@@ -17,7 +24,6 @@ function App() {
 								<Router>
 									<Nav />
 										<Switch>
-											<Route exact path="/journal" component={Journal} />
 											<Route exact path="/resources" component={Help} />
 											<Route path="/" exact component={Home} />
 										</Switch>
@@ -39,13 +45,12 @@ function Home() {
   const [apiResponse, setapiResponse] = useState("");
   const userInput = useRef('');
   const passwordInput = useRef('');
+  const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/hello').then(res => res.json()).then(data => {
-      setPlaceholder(data.result);
-    });
-  }, []);
-
+	setapiResponse("")
+  }, [])
+  // Authentication Functions
   useEffect(() => {
 	  const requestData = {
 		  method: 'POST',
@@ -56,7 +61,18 @@ function Home() {
 	  	.then(response=>response.json())
 		.then(data => setapiResponse(data.response));
 	  console.log(apiResponse);
+	  if (apiResponse === "Login Successful") {
+		  setLoggedIn(true);
+	  }
   }, [postId])
+
+
+  const logOut = () => {
+	  setLoggedIn(false);
+	  setUserVal("");
+	  setPasswordVal("");
+	  setapiResponse("");
+  }
 
   const submitCredentials = () => {
 	  userInput.current.value='';
@@ -64,30 +80,100 @@ function Home() {
 	  console.log(userVal, passwordVal);
 	  setPostId(postId + 1);
   }
-/*
+
+  // Retrieving Data After Login
+  const [journalLogs, setJournalLogs] = useState([]);
+  const [journalContent, setJournalContent] = useState("");
+  const [dateSelected, setDateSelected] = useState("");
+  const [logsUpdateTracker, setUpdateTracker] = useState(true);
+  const [todayJournal, setTodayJournal] = useState("");
+
+  useEffect(() => {
+	// retrieve list of all dates that the user has journals for
+	fetch('http://localhost:5000/api/dates')
+		.then(response => response.json())
+		.then(data => setJournalLogs(data.response))
+  }, [logsUpdateTracker])
+
+  function retrieveJournalData(e) {
+	  // retrieve one day's journal data
+	  if (e.target.value !== 'Today') {
+		let formatted_date = 'http://localhost:5000/api/logs?date='+e.target.value.replace(' ', '-');
+		fetch(formatted_date)
+			.then(response => response.json())
+			.then(data => setJournalContent(data.response));
+		//console.log(journalContent);
+		setDateSelected(e.target.value);
+	  } else {
+		  setJournalContent("");
+		  setDateSelected(e.target.value);
+	  }
+  }
+
+  function saveTodayJournal() {
+	  // save today's journal logs to db
+	fetch('http://localhost:5000/api/savetoday', {
+		method: 'POST', // or 'PUT'
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({logs: todayJournal}),
+		})
+		.then(response => response.json())
+		.then(data => {
+		console.log('Response:', data['response']);
+		setUpdateTracker(!logsUpdateTracker); // update dropdown with todays stuff
+		setapiResponse(data['response']);
+		});
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <p>Flask says {placeholder}</p>
-      </header>
-    </div>
-  );
-}
-*/
-  return (
-    <div className="app">
+	  <>
+	  {loggedIn && (
+		  <div className="app">
+			  <head>
+				  <title>Logged In</title>
+			  </head>
+			  <body>
+			  		<section id="login">
+						<br/>
+						<div class="container">
+							<button type="button" onClick={logOut}>Log Out</button>
+						</div>
+					</section>
+
+					<section>
+						<h1>Welcome {userVal}!</h1>
+					</section>
+				  <select onChange={retrieveJournalData}>
+					  <option> Today </option>
+					  {journalLogs.map((log) =>
+					  	<option key={log["day"]} value={log["day"]}>{log["day"]} Journal</option>
+					  )}
+				  </select>
+				  <section>
+				  	<h2>{dateSelected} Journal</h2>
+				  	<p>{journalContent}</p>
+					{dateSelected === 'Today' && (
+						<div>
+							<textarea 
+								type="text"
+								value={todayJournal}
+								onChange={e => setTodayJournal(e.target.value)}
+								rows= "15"
+							/>
+							<br />
+							<button onClick={saveTodayJournal}>Save</button>
+							<p> {apiResponse} </p>
+						</div>
+					)}
+				  </section>
+			  </body>
+		  </div>
+	)}
+
+	  {!loggedIn && (
+		<div className="app">
 	<head>
 		<title>Strongly Typed by HTML5 UP</title>
 		<meta charset="utf-8" />
@@ -108,6 +194,7 @@ function Home() {
 								<div class="container">
 									<input type="text" ref={userInput} onChange={event => setUserVal(event.target.value)}/>
 									<input type="text" ref={passwordInput} onChange={event => setPasswordVal(event.target.value)}/>
+									<br/>
 									<button type="button" onClick={submitCredentials}>Login/Create Account</button>
 									<p>{apiResponse}</p>
 								</div>
@@ -117,27 +204,6 @@ function Home() {
 							<nav id="nav">
 								<ul>
 									<li><a class="icon solid fa-home" href="index.html"><span>Home</span></a></li>
-									{/* This is an extra dropdown tab, don't think we need it rn. 
-									We can add if we need more pages or have a page that branches
-									-Angelyn
-									
-									<li>
-										<a href="#" class="icon fa-chart-bar"><span>Dropdown</span></a>
-										<ul>
-											<li><a href="#">Lorem ipsum dolor</a></li>
-											<li><a href="#">Magna phasellus</a></li>
-											<li><a href="#">Etiam dolore nisl</a></li>
-											<li>
-												<a href="#">Phasellus consequat</a>
-												<ul>
-													<li><a href="#">Magna phasellus</a></li>
-													<li><a href="#">Etiam dolore nisl</a></li>
-													<li><a href="#">Phasellus consequat</a></li>
-												</ul>
-											</li>
-											<li><a href="#">Veroeros feugiat</a></li>
-										</ul>
-									</li> */}
 									<li><a class="icon solid fa-cog" href="left-sidebar.html"><span>About</span></a></li>
 									<li><a class="icon solid fa-retweet" href="right-sidebar.html"><span>Journal</span></a></li>
 									<li><a class="icon solid fa-retweet" href="right-sidebar.html"><span>Resources</span></a></li>
@@ -155,7 +221,7 @@ function Home() {
 							<div class="col-4 col-6-medium col-12-small">
 
 									<section>
-										<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+										<a href="#" class="image featured"><img src={Image1} alt="" /></a>
 										<header>
 											<h3>Okay, so what is this?</h3>
 										</header>
@@ -167,7 +233,7 @@ function Home() {
 							</div>
 							<div class="col-4 col-6-medium col-12-small">
 									<section>
-										<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
+										<a href="#" class="image featured"><img src={Image2} alt="" /></a>
 										<header>
 											<h3>Nice! What is HTML5 UP?</h3>
 										</header>
@@ -180,7 +246,7 @@ function Home() {
 							<div class="col-4 col-6-medium col-12-small">
 
 									<section>
-										<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
+										<a href="#" class="image featured"><img src={Image3} alt="" /></a>
 										<header>
 											<h3>What's this built with?</h3>
 										</header>
@@ -216,7 +282,7 @@ function Home() {
 												<h2><a href="#">I don’t want to say <strong>it’s the aliens</strong> ...<br />
 												but it’s the aliens.</a></h2>
 											</header>
-											<a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
+											<a href="#" class="image featured"><img src={Image4} alt="" /></a>
 											<h3>I mean isn't it possible?</h3>
 											<p>Phasellus laoreet massa id justo mattis pharetra. Fusce suscipit
 											ligula vel quam viverra sit amet mollis tortor congue. Sed quis mauris
@@ -237,7 +303,7 @@ function Home() {
 												<h2><a href="#">By the way, many thanks to <strong>regularjane</strong>
 												for these awesome demo photos</a></h2>
 											</header>
-											<a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
+											<a href="#" class="image featured"><img src={Image5} alt="" /></a>
 											<h3>You should probably check out her work</h3>
 											<p>Phasellus laoreet massa id justo mattis pharetra. Fusce suscipit
 											ligula vel quam viverra sit amet mollis tortor congue. Sed quis mauris
@@ -316,7 +382,7 @@ function Home() {
 															<header>
 																<h3><a href="#">Something of note</a></h3>
 															</header>
-															<a href="#" class="image left"><img src="images/pic06.jpg" alt="" /></a>
+															<a href="#" class="image left"><img src={Image6} alt="" /></a>
 															<p>Phasellus sed laoreet massa id justo mattis pharetra. Fusce suscipit ligula vel quam
 															viverra sit amet mollis tortor congue magna lorem ipsum dolor et quisque ut odio facilisis
 															convallis. Etiam non nunc vel est suscipit convallis non id orci. Ut interdum tempus
@@ -333,7 +399,7 @@ function Home() {
 															<header>
 																<h3><a href="#">Something of less note</a></h3>
 															</header>
-															<a href="#" class="image left"><img src="images/pic07.jpg" alt="" /></a>
+															<a href="#" class="image left"><img src={Image7} alt="" /></a>
 															<p>Phasellus sed laoreet massa id justo mattis pharetra. Fusce suscipit ligula vel quam
 															viverra sit amet mollis tortor congue magna lorem ipsum dolor et quisque ut odio facilisis
 															convallis. Etiam non nunc vel est suscipit convallis non id orci. Ut interdum tempus
@@ -439,6 +505,8 @@ function Home() {
 
 	</body>
   </div>
-  );
+	)}
+  	</>
+  )
 }
 export default App;
