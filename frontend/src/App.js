@@ -172,7 +172,7 @@ function Home() {
 		  </div>
 	)}
 
-	  {!loggedIn && (
+{!loggedIn && (
 		<div className="app">
 	<head>
 		<title>Strongly Typed by HTML5 UP</title>
@@ -199,134 +199,104 @@ function Home() {
 									<p>{apiResponse}</p>
 								</div>
 							</section>
-							
-							
-							<nav id="nav">
-								<ul>
-									<li><a class="icon solid fa-home" href="index.html"><span>Home</span></a></li>
-									<li><a class="icon solid fa-cog" href="left-sidebar.html"><span>About</span></a></li>
-									<li><a class="icon solid fa-retweet" href="right-sidebar.html"><span>Journal</span></a></li>
-									<li><a class="icon solid fa-retweet" href="right-sidebar.html"><span>Resources</span></a></li>
-									<li><a class="icon solid fa-sitemap" href="no-sidebar.html"><span>Login</span></a></li>
-								</ul>
-							</nav>
 					</div>
 				</section>
+
+				{/*Features (Why Mental Health section) */}
 				<section id="features">
 					<div class="container">
+
 						<header>
-							<h2>Gentlemen, behold! This is <strong>Strongly Typed</strong>!</h2>
+						<h2>Understanding <strong>Mental Health?</strong> and Why it Matters</h2>
 						</header>
+
 						<div class="row aln-center">
 							<div class="col-4 col-6-medium col-12-small">
-
 									<section>
-										<a href="#" class="image featured"><img src={Image1} alt="" /></a>
+										<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
 										<header>
-											<h3>Okay, so what is this?</h3>
+											<h3>Your emotional well-being</h3>
 										</header>
-										<p>This is <strong>Strongly Typed</strong>, a free, fully responsive site template
-										by <a href="http://html5up.net">HTML5 UP</a>. Free for personal and commercial use under the
-										<a href="http://html5up.net/license">CCA 3.0 license</a>.</p>
+										<p>According to <a target="_blank" href="https://www.mentalhealth.gov/basics/what-is-mental-health"><u><strong>MentalHealth.gov</strong></u></a>, 
+										if you experience mental health problems, your thinking, mood, and behavior could be affected. 
+										But mental health problems are common, and there's always help available. :)</p>
 									</section>
-
 							</div>
+
 							<div class="col-4 col-6-medium col-12-small">
 									<section>
-										<a href="#" class="image featured"><img src={Image2} alt="" /></a>
+										<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
 										<header>
-											<h3>Nice! What is HTML5 UP?</h3>
+											<h3>Awareness makes the world a better place</h3>
 										</header>
-										<p><a href="http://html5up.net">HTML5 UP</a> is a side project of <a href="http://twitter.com/ajlkn">AJ’s</a> (= me).
-										I started it as a way to both test my responsive tools and sharpen up my coding
-										and design skills a bit.</p>
+										<p>One of the best ways to spread love in the world is learning how to be empathetic of others,
+											which means that it knowing what kinds of mental health problems people might be going through could make a big difference,
+											and help people you care about take steps towards healing.
+										</p>
 									</section>
-
 							</div>
+
 							<div class="col-4 col-6-medium col-12-small">
-
 									<section>
-										<a href="#" class="image featured"><img src={Image3} alt="" /></a>
+										<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
 										<header>
-											<h3>What's this built with?</h3>
+											<h3>Everyone deserves help</h3>
 										</header>
-										<p><strong>Responsive Tools</strong> is a simple set of tools for building responsive
-										sites and apps. All of my templates at <a href="http://html5up.net">HTML5 UP</a> are built using these tools.</p>
+										<p>The goal of this Mental Health Assistant web app is to help individuals 
+											better understand themselves and to provide a safe space to express themselves.</p>
 									</section>
-
 							</div>
+
 							<div class="col-12">
 								<ul class="actions">
-									<li><a href="#" class="button icon solid fa-file">Tell Me More</a></li>
+									{/*redirect to Help page?*/}
+									<li><a href="#" class="button icon solid fa-file">Learn More</a></li>
 								</ul>
 							</div>
 						</div>
 					</div>
 				</section>
 
+				{/*Banner (Quote)*/}
 				<section id="banner">
 					<div class="container">
-						<p>Use this space for <strong>profound thoughts</strong>.<br />
-						Or an enormous ad. Whatever.</p>
+					<p><em><strong>"The greatest blessings of mankind are within us and within our reach. 
+							A wise man is content with his lot, whatever it may be, 
+							without wishing for what he has not" — Seneca</strong></em></p>
 					</div>
 				</section>
 
+				{/*Main (Why Mental Health section) */}
 				<section id="main">
 					<div class="container">
 						<div class="row">
-
 								<div id="content" class="col-8 col-12-medium">
-
 										<article class="box post">
 											<header>
-												<h2><a href="#">I don’t want to say <strong>it’s the aliens</strong> ...<br />
-												but it’s the aliens.</a></h2>
+												<h2>What can <strong>Mental Health Assistant</strong> do for me?</h2>
 											</header>
-											<a href="#" class="image featured"><img src={Image4} alt="" /></a>
-											<h3>I mean isn't it possible?</h3>
-											<p>Phasellus laoreet massa id justo mattis pharetra. Fusce suscipit
-											ligula vel quam viverra sit amet mollis tortor congue. Sed quis mauris
-											sit amet magna accumsan tristique. Curabitur leo nibh, rutrum eu malesuada
-											in, tristique at erat lorem ipsum dolor sit amet lorem ipsum sed consequat
-											magna tempus veroeros lorem sed tempus aliquam lorem ipsum veroeros
-											consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id
-											justo mattis pharetra. Fusce suscipit ligula vel quam viverra sit amet
-											mollis tortor congue. Sed quis mauris sit amet magna accumsan tristique.
-											Curabitur leo nibh, rutrum eu malesuada in tristique.</p>
+											<a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
+											<h3></h3>
+											<p>Mental Health is here to provide you insightful tools to help you with your 
+												healing process! :) This web app includes a journal to log your emotions, which has 
+												(or, we intend to add) sentimental analysis and can detect your mood based on what 
+												you write. We also have an interactive assistant, that you might have seen, popping up 
+												through a chatbox on the screen! It can do many things, like helping you find what you need ,
+												do mood checks, remind you to write logs in your journal, and give you daily
+												positive affirmations!</p>
 											<ul class="actions">
 												<li><a href="#" class="button icon solid fa-file">Continue Reading</a></li>
 											</ul>
 										</article>
 
 										<article class="box post">
-											<header>
-												<h2><a href="#">By the way, many thanks to <strong>regularjane</strong>
-												for these awesome demo photos</a></h2>
+										<header>
+												<h2><a href="#">About the makers of <strong>Mental Health Assistant</strong></a></h2>
 											</header>
-											<a href="#" class="image featured"><img src={Image5} alt="" /></a>
-											<h3>You should probably check out her work</h3>
-											<p>Phasellus laoreet massa id justo mattis pharetra. Fusce suscipit
-											ligula vel quam viverra sit amet mollis tortor congue. Sed quis mauris
-											sit amet magna accumsan tristique. Curabitur leo nibh, rutrum eu malesuada
-											in, tristique at erat lorem ipsum dolor sit amet lorem ipsum sed consequat
-											consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id
-											in, tristique at erat lorem ipsum dolor sit amet lorem ipsum sed consequat
-											magna tempus veroeros lorem sed tempus aliquam lorem ipsum veroeros
-											consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id
-											justo mattis pharetra. Fusce suscipit ligula vel quam viverra sit amet
-											mollis tortor congue. Sed quis mauris sit amet magna accumsan tristique.
-											Curabitur leo nibh, rutrum malesuada.</p>
-											<p>Erat lorem ipsum veroeros consequat magna tempus lorem ipsum consequat
-											Phasellus laoreet massa id justo mattis pharetra. Fusce suscipit ligula
-											vel quam viverra sit amet mollis tortor congue. Sed quis mauris sit amet
-											magna accumsan tristique. Curabitur leo nibh, rutrum eu malesuada in,
-											tristique at erat. Curabitur leo nibh, rutrum eu malesuada in, tristique
-											at erat lorem ipsum dolor sit amet lorem ipsum sed consequat magna
-											tempus veroeros lorem sed tempus aliquam lorem ipsum veroeros consequat
-											magna tempus.</p>
-											<ul class="actions">
-												<li><a href="#" class="button icon solid fa-file">Continue Reading</a></li>
-											</ul>
+											<a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
+											<h3>This project was made possible by MLH Fellowship!</h3>
+											<p>This final project... blah blah blah</p>
+											<spacer></spacer>
 										</article>
 
 								</div>
@@ -338,9 +308,10 @@ function Home() {
 												<li>
 
 														<article class="box excerpt">
+														<h2>Updates</h2>
 															<header>
-																<span class="date">July 30</span>
-																<h3><a href="#">Just another post</a></h3>
+																<span class="date">Aug 8, 2021</span>
+																<h3><a href="#">Sprint 1</a></h3>
 															</header>
 															<p>Lorem ipsum dolor odio facilisis convallis. Etiam non nunc vel est
 															suscipit convallis non id orci lorem ipsum sed magna consequat feugiat lorem dolore.</p>
@@ -351,8 +322,8 @@ function Home() {
 
 														<article class="box excerpt">
 															<header>
-																<span class="date">July 28</span>
-																<h3><a href="#">And another post</a></h3>
+																<span class="date">Aug 13, 2021</span>
+																<h3><a href="#">Sprint 2</a></h3>
 															</header>
 															<p>Lorem ipsum dolor odio facilisis convallis. Etiam non nunc vel est
 															suscipit convallis non id orci lorem ipsum sed magna consequat feugiat lorem dolore.</p>
@@ -363,8 +334,8 @@ function Home() {
 
 														<article class="box excerpt">
 															<header>
-																<span class="date">July 24</span>
-																<h3><a href="#">One more post</a></h3>
+																<span class="date">Aug 20, 2021</span>
+																<h3><a href="#">Sprint 3</a></h3>
 															</header>
 															<p>Lorem ipsum dolor odio facilisis convallis. Etiam non nunc vel est
 															suscipit convallis non id orci lorem ipsum sed magna consequat feugiat lorem dolore.</p>
@@ -373,52 +344,51 @@ function Home() {
 												</li>
 											</ul>
 										</section>
-
-										<section>
-											<ul class="divided">
-												<li>
-
-														<article class="box highlight">
-															<header>
-																<h3><a href="#">Something of note</a></h3>
-															</header>
-															<a href="#" class="image left"><img src={Image6} alt="" /></a>
-															<p>Phasellus sed laoreet massa id justo mattis pharetra. Fusce suscipit ligula vel quam
-															viverra sit amet mollis tortor congue magna lorem ipsum dolor et quisque ut odio facilisis
-															convallis. Etiam non nunc vel est suscipit convallis non id orci. Ut interdum tempus
-															facilisis convallis. Etiam non nunc vel est suscipit convallis non id orci.</p>
-															<ul class="actions">
-																<li><a href="#" class="button icon solid fa-file">Learn More</a></li>
-															</ul>
-														</article>
-
-												</li>
-												<li>
-
-														<article class="box highlight">
-															<header>
-																<h3><a href="#">Something of less note</a></h3>
-															</header>
-															<a href="#" class="image left"><img src={Image7} alt="" /></a>
-															<p>Phasellus sed laoreet massa id justo mattis pharetra. Fusce suscipit ligula vel quam
-															viverra sit amet mollis tortor congue magna lorem ipsum dolor et quisque ut odio facilisis
-															convallis. Etiam non nunc vel est suscipit convallis non id orci. Ut interdum tempus
-															facilisis convallis. Etiam non nunc vel est suscipit convallis non id orci.</p>
-															<ul class="actions">
-																<li><a href="#" class="button icon solid fa-file">Learn More</a></li>
-															</ul>
-														</article>
-
-												</li>
-											</ul>
-										</section>
-
 								</div>
+						</div>
+					</div>
+
+					<h2><span>Meet the Team!</span></h2>
+					<div class="row aln-center">
+						<div class="col-4 col-6-medium col-12-small">
+							
+								<section>
+									
+									<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+									<header>
+										<h3>Angelyn Domingo</h3>
+									</header>
+									<p>She did frontend stuff!</p>
+								</section>
+
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+								<section>
+									<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
+									<header>
+										<h3>Tracy Dong</h3>
+									</header>
+									<p>She tied frontend and backend stuff together!
+									</p>
+								</section>
+
+						</div>
+						<div class="col-4 col-6-medium col-12-small">
+
+								<section>
+									<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
+									<header>
+										<h3>Vi Pham</h3>
+									</header>
+									<p>She originally inspired this project and did the backend stuff!</p>
+								</section>
 
 						</div>
 					</div>
+
 				</section>
 
+				{/*Footer*/}
 				<section id="footer">
 					<div class="container">
 						<header>
