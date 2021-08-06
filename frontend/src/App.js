@@ -12,6 +12,9 @@ import Image4 from "./images/pic04.jpg";
 import Image5 from "./images/pic05.jpg";
 import Image6 from "./images/pic06.jpg";
 import Image7 from "./images/pic07.jpg";
+import AngelynPFP from "./images/AngelynPFP.jpg";
+import TracyPFP from "./images/TracyPFP.jpg";
+import ViPFP from "./images/ViPFP.jfif";
 
 function App() {
 	return (
@@ -207,7 +210,7 @@ function Home() {
 					<div class="container">
 
 						<header>
-						<h2>Understanding <strong>Mental Health?</strong> and Why it Matters</h2>
+						<h2>Understanding <strong>Mental Health</strong> and Why it Matters</h2>
 						</header>
 
 						<div class="row aln-center">
@@ -313,8 +316,7 @@ function Home() {
 																<span class="date">Aug 8, 2021</span>
 																<h3><a href="#">Sprint 1</a></h3>
 															</header>
-															<p>Lorem ipsum dolor odio facilisis convallis. Etiam non nunc vel est
-															suscipit convallis non id orci lorem ipsum sed magna consequat feugiat lorem dolore.</p>
+															<p>Created Login, Home, and Help pages (frontend), which connect to a database (backend)...</p>
 														</article>
 
 												</li>
@@ -354,7 +356,7 @@ function Home() {
 							
 								<section>
 									
-									<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+									<span class="image featured"><img src={AngelynPFP} alt="" /></span>
 									<header>
 										<h3>Angelyn Domingo</h3>
 									</header>
@@ -364,7 +366,7 @@ function Home() {
 						</div>
 						<div class="col-4 col-6-medium col-12-small">
 								<section>
-									<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
+									<span class="image featured"><img src={TracyPFP} alt="" /></span>
 									<header>
 										<h3>Tracy Dong</h3>
 									</header>
@@ -376,7 +378,7 @@ function Home() {
 						<div class="col-4 col-6-medium col-12-small">
 
 								<section>
-									<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
+									<span class="image featured"><img src={ViPFP} alt="" /></span>
 									<header>
 										<h3>Vi Pham</h3>
 									</header>
