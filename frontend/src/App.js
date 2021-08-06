@@ -90,7 +90,7 @@ function Home() {
 
   useEffect(() => {
 	// retrieve list of all dates that the user has journals for
-	fetch('http://localhost:5000/api/dates')
+	fetch('http://localhost:5000/api/dates?user='+userVal)
 		.then(response => response.json())
 		.then(data => setJournalLogs(data.response))
   }, [logsUpdateTracker])
@@ -98,7 +98,7 @@ function Home() {
   function retrieveJournalData(e) {
 	  // retrieve one day's journal data
 	  if (e.target.value !== 'Today') {
-		let formatted_date = 'http://localhost:5000/api/logs?date='+e.target.value.replace(' ', '-');
+		let formatted_date = 'http://localhost:5000/api/logs?date='+userVal+'-'+e.target.value.replace(' ', '-');
 		fetch(formatted_date)
 			.then(response => response.json())
 			.then(data => setJournalContent(data.response));
@@ -117,7 +117,7 @@ function Home() {
 		headers: {
 			'Content-Type': 'application/json',
 		},
-		body: JSON.stringify({logs: todayJournal}),
+		body: JSON.stringify({logs: todayJournal, user: userVal}),
 		})
 		.then(response => response.json())
 		.then(data => {
@@ -152,7 +152,7 @@ function Home() {
 					  )}
 				  </select>
 				  <section>
-				  	<h2>{dateSelected} Journal</h2>
+				  	<h2>{dateSelected}'s Journal</h2>
 				  	<p>{journalContent}</p>
 					{dateSelected === 'Today' && (
 						<div>
