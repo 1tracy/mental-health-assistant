@@ -14,6 +14,7 @@ function Home() {
     const userInput = useRef('');
     const passwordInput = useRef('');
     const [loggedIn, setLoggedIn] = useState(false);
+    const API_ADDRESS = "http://localhost:5000/";
   
     useEffect(() => {
       setapiResponse("")
@@ -25,7 +26,7 @@ function Home() {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({username: userVal, password: passwordVal})
         };
-        fetch('http://localhost:5000/api/login', requestData)
+        fetch(API_ADDRESS+'api/login', requestData)
             .then(response=>response.json())
           .then(data => setapiResponse(data.response));
         console.log(apiResponse);
@@ -58,7 +59,7 @@ function Home() {
   
     useEffect(() => {
       // retrieve list of all dates that the user has journals for
-      fetch('http://localhost:5000/api/dates?user='+userVal)
+      fetch(API_ADDRESS+'api/dates?user='+userVal)
           .then(response => response.json())
           .then(data => setJournalLogs(data.response))
     }, [logsUpdateTracker])
@@ -66,7 +67,7 @@ function Home() {
     function retrieveJournalData(e) {
         // retrieve one day's journal data
         if (e.target.value !== 'Today') {
-          let formatted_date = 'http://localhost:5000/api/logs?date='+userVal+'-'+e.target.value.replace(' ', '-');
+          let formatted_date = API_ADDRESS+'api/logs?date='+userVal+'-'+e.target.value.replace(' ', '-');
           fetch(formatted_date)
               .then(response => response.json())
               .then(data => setJournalContent(data.response));
@@ -80,7 +81,7 @@ function Home() {
   
     function saveTodayJournal() {
         // save today's journal logs to db
-      fetch('http://localhost:5000/api/savetoday', {
+      fetch(API_ADDRESS+'api/savetoday', {
           method: 'POST', // or 'PUT'
           headers: {
               'Content-Type': 'application/json',
