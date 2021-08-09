@@ -6,7 +6,10 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
-
+.nav-links button {
+  padding: 20px;
+  margin: 20px;
+}
 html,
 body,
 div,
@@ -158,6 +161,9 @@ textarea {
   -webkit-appearance: none;
   -ms-appearance: none;
   appearance: none;
+  width: 60%;
+  font-size: 1em;
+  padding: 10px;
 }
 
 /* Basic */
@@ -197,9 +203,14 @@ select {
   font-weight: 300;
   color: #777;
   line-height: 1.65em;
-  font-size: 15pt;
+  font-size: 20pt;
 }
 
+textarea {
+  width: 80%;
+  min-height: 2vh;
+  word-wrap: break-word;
+}
 h1,
 h2,
 h3,
