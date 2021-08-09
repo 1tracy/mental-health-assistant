@@ -1,0 +1,28 @@
+version: "3"
+services:
+  web:
+    container_name: flask-api
+    build: backend
+    restart: always
+    env_file:
+      - ./backend/.env
+    volumes:
+      - ./backend:/backend
+    ports:
+      - "5000:80"
+    depends_on:
+      - db
+
+  db:
+    container_name: mhaDb
+    image: postgres
+    restart: always
+    env_file:
+      - ./backend/.env
+    volumes:
+      - userdatabase:/var/lib/postgresql/data
+
+
+
+volumes:
+  userdatabase:
