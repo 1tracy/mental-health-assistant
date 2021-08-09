@@ -39,6 +39,7 @@ class UserModel(db.Model):
 def register():
     if request.method == 'POST':
         content = request.json
+        print(content)
         username = content['username']
         password = content['password']
         error = None
@@ -57,25 +58,21 @@ def register():
             return {"response" : f"User {username} created successfully"}
         else:
             return {"response" : error}
+    return 'not implemented'
 
 
 @app.route('/api/login', methods=('GET', 'POST'))
 def login():
-    if (request.json['username'] != ''):
-        return {"response": "Login Successful"}   
-    return {"response" : ""}
     # the rest of the code does not run
     if request.method == 'POST':
+
         content = request.json
+        print(content['username'])
         username = content['username']
         password = content['password']
         error = None
-        
-        print([username, password])
-        # return {"response" : "Login Successful"}
+        user = UserModel.query.filter_by(username=username).first()
 
-        #user = UserModel.query.filter_by(username=username).first()
-        user = None
         if user is None:
             error = 'Incorrect username.'
         elif not check_password_hash(user.password, password):
@@ -85,6 +82,7 @@ def login():
             return {"response": "Login Successful"}
         else:
             return {"response": error}
+    return 'not implemented'
 
 
 
@@ -99,6 +97,11 @@ def say_hello_world():
 #
 #     print(content['username'], content['password'])
 #     return (content['username'], content['password'])
+
+
+# Register + login Page:
+# rn: they are on port 5000.
+# ideally: they should be on port 3000.
 
 # retrieve journal data
 @app.route('/api/logs')
