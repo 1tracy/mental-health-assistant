@@ -39,6 +39,7 @@ class UserModel(db.Model):
 def register():
     if request.method == 'POST':
         content = request.json
+        print(content)
         username = content['username']
         password = content['password']
         error = None
@@ -57,16 +58,16 @@ def register():
             return {"response" : f"User {username} created successfully"}
         else:
             return {"response" : error}
+    return 'not implemented'
 
 
 @app.route('/api/login', methods=('GET', 'POST'))
 def login():
-    if (request.json['username'] != ''):
-        return {"response": "Login Successful"}   
-    return {"response" : ""}
     # the rest of the code does not run
     if request.method == 'POST':
+
         content = request.json
+        print(content['username'])
         username = content['username']
         password = content['password']
         error = None
@@ -85,6 +86,7 @@ def login():
             return {"response": "Login Successful"}
         else:
             return {"response": error}
+    return 'not implemented'
 
 
 
