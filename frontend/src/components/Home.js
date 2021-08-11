@@ -8,6 +8,7 @@ import ViPFP from "../images/ViPFP.jfif";
 import hearthug from "../images/heart-hug.png";
 import empathy from "../images/empathy.png";
 import help from "../images/help.png";
+import mlhBanner from "../images/mlh.png";
 
 function Home() {
     const [placeholder, setPlaceholder] = useState('Hi');
@@ -259,17 +260,27 @@ function Home() {
                                     through a chatbox on the screen! It can do many things, like helping you find what you need ,
                                     do mood checks, remind you to write logs in your journal, and give you daily
                                     positive affirmations!</p>
-                                    <ul class="actions">
+                                    {/*<ul class="actions">
                                         <li><a href="#" class="button icon solid fa-file">Continue Reading</a></li>
-                                    </ul>
+                                    </ul>*/}
                                 </article>
                                 <article class="box post">
                                     <header>
                                         <h2><a href="#">About the makers of <strong>Mental Health Assistant</strong></a></h2>
                                     </header>
-                                    <a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
+                                    <span class="image featured"><img src={mlhBanner} alt="" /></span>
                                     <h3>This project was made possible by MLH Fellowship!</h3>
-                                    <p>This final project... blah blah blah</p>
+                                    <p>The Mental Health Assistant is a final project made by MLH Production Engineer Fellows! Through this project we
+                                        implement skills we gained from the Production Engineering program from MLH and Facebook, which had the following requirements:</p>
+                                    <ul>
+                                        <li>hosted by a web server</li>
+                                        <li>has a database</li>
+                                        <li>at least 1 component in a Docker container</li>
+                                        <li>uses CI/CD system</li>
+                                        <li>has a monitoring system</li>
+                                        <li>deployed to AWS using a reverse proxy</li>
+                                    </ul>
+                                    <p>Our final project description can be found on <a target="_blank" href="https://fellowship-pe-project-batch-3.devpost.com/"><u>Devpost</u></a>.</p>
                                     <spacer></spacer>
                                 </article>
                             </div>
@@ -322,7 +333,11 @@ function Home() {
                                     <header>
                                         <h3>Angelyn Domingo</h3>
                                     </header>
-                                    <p>She did frontend stuff!</p>
+                                    <p>Angelyn worked on the frontend of this project! She is currently a sophomore CS student as George Mason University and 
+                                        recently learned web dev to help contribute to this web app. Her personal experiences with mental health problems and 
+                                        struggles as a young, growing woman brought her to help create an assistant that helps others realize their potential. 
+                                        She deeply cares for struggling people, especially minorities and quiet ones, and hopes to inspire people by sharing her 
+                                        experiences and making people smile!</p>
                             </section>
                         </div>
                         <div class="col-4 col-6-medium col-12-small">
@@ -344,12 +359,13 @@ function Home() {
                                 </header>
                                 <p>She originally inspired this project and did the backend stuff!</p>
                             </section>
-        
+                            
                         </div>
+                        <spacer></spacer>
                     </div>
                 </section>
         
-                {/*Footer*/}
+                {/*Footer
                 <section id="footer">
                     <div class="container">
                         <header>
@@ -423,7 +439,7 @@ function Home() {
                             <li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
                         </ul>
                     </div>
-                </section>
+                </section> */}
             </div>
             <script src="assets/js/jquery.min.js"></script>
             <script src="assets/js/jquery.dropotron.min.js"></script>
