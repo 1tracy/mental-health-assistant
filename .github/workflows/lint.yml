@@ -12,5 +12,4 @@ jobs:
       - name: Set up Eslint
       - uses: stefanoeb/eslint-action@1.0.2
         with:
-          eslint: true
           files: "frontend/"
