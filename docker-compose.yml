@@ -1,15 +1,17 @@
 version: "3"
 services:
-  web:
-    container_name: flask-api
+  backend:
+    container_name: backend
+    ports:
+      - 5000:5000
     build: backend
     restart: always
+    environment:
+      - FLASK_ENV=development
     env_file:
       - ./backend/.env
     volumes:
       - ./backend:/backend
-    ports:
-      - "5000:80"
     depends_on:
       - db
 
@@ -22,7 +24,6 @@ services:
     volumes:
       - userdatabase:/var/lib/postgresql/data
 
-
-
 volumes:
+  node-modules:
   userdatabase:
