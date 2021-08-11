@@ -23,7 +23,10 @@ function Home() {
     useEffect(() => {
         const requestData = {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
+            headers: {
+                'Authorization' : btoa(userVal+':'+passwordVal),
+                'Content-Type': 'application/json'
+                },
             body: JSON.stringify({username: userVal, password: passwordVal})
         };
         fetch(API_ADDRESS+'api/login', requestData)
@@ -59,7 +62,12 @@ function Home() {
   
     useEffect(() => {
       // retrieve list of all dates that the user has journals for
-      fetch(API_ADDRESS+'api/dates?user='+userVal)
+      fetch(API_ADDRESS+'api/dates?user='+userVal, {
+          headers: {
+            'Authorization' : btoa(userVal+':'+passwordVal),
+            'Content-Type': 'application/json'
+          }
+      })
           .then(response => response.json())
           .then(data => setJournalLogs(data.response))
     }, [logsUpdateTracker])
@@ -68,7 +76,12 @@ function Home() {
         // retrieve one day's journal data
         if (e.target.value !== 'Today') {
           let formatted_date = API_ADDRESS+'api/logs?date='+userVal+'-'+e.target.value.replace(' ', '-');
-          fetch(formatted_date)
+          fetch(formatted_date, {
+              headers: {
+                'Authorization' : btoa(userVal+':'+passwordVal),
+                'Content-Type': 'application/json'
+              }
+          })
               .then(response => response.json())
               .then(data => setJournalContent(data.response));
           //console.log(journalContent);
@@ -84,7 +97,8 @@ function Home() {
       fetch(API_ADDRESS+'api/savetoday', {
           method: 'POST', // or 'PUT'
           headers: {
-              'Content-Type': 'application/json',
+            'Authorization' : btoa(userVal+':'+passwordVal),
+            'Content-Type': 'application/json'
           },
           body: JSON.stringify({logs: todayJournal, user: userVal}),
           })
