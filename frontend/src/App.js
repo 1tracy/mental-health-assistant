@@ -8,10 +8,10 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 function App() {
 	return (
 		<div className="app">
-			<body class="homepage is-preload">
+			<body className="homepage is-preload">
 				<div id="page-wrapper">
 					<section id="header">
-						<div class="container">
+						<div className="container">
 							<nav id="nav">
 								<Router>
 									<Nav />

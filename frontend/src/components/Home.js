@@ -6,7 +6,6 @@ import TracyPFP from "../images/TracyPFP.jpg";
 import ViPFP from "../images/ViPFP.jfif";
 
 function Home() {
-    const [placeholder, setPlaceholder] = useState('Hi');
     const [userVal, setUserVal] = useState('');
     const [passwordVal, setPasswordVal] = useState('');
     const [postId, setPostId] = useState(0);
@@ -116,7 +115,7 @@ function Home() {
             <div>
                         <section id="login">
                           <br/>
-                          <div class="container">
+                          <div className="container">
                               <button type="button" onClick={logOut}>Log Out</button>
                           </div>
                       </section>
@@ -155,14 +154,14 @@ function Home() {
           <div id="page-wrapper">
                   <section id="header">
                       
-                      <div class="container">
+                      <div className="container">
   
                               <h1 id="logo"><a href="index.html">Mental Health Assistant</a></h1>
                               <p>A project by Angelyn, Tracy, and Vi.</p>
                               
                               <section id="login">
                                   <br/>
-                                  <div class="container">
+                                  <div className="container">
                                       <input type="text" ref={userInput} onChange={event => setUserVal(event.target.value)}/>
                                       <input type="text" ref={passwordInput} onChange={event => setPasswordVal(event.target.value)}/>
                                       <br/>
@@ -175,16 +174,16 @@ function Home() {
   
                   {/*Features (Why Mental Health section) */}
                   <section id="features">
-                      <div class="container">
+                      <div className="container">
   
                           <header>
                           <h2>Understanding <strong>Mental Health</strong> and Why it Matters</h2>
                           </header>
   
-                          <div class="row aln-center">
-                              <div class="col-4 col-6-medium col-12-small">
+                          <div className="row aln-center">
+                              <div className="col-4 col-6-medium col-12-small">
                                       <section>
-                                          <a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+                                          <a href="#" className="image featured"><img src="" alt="" /></a>
                                           <header>
                                               <h3>Your emotional well-being</h3>
                                           </header>
@@ -194,9 +193,9 @@ function Home() {
                                       </section>
                               </div>
   
-                              <div class="col-4 col-6-medium col-12-small">
+                              <div className="col-4 col-6-medium col-12-small">
                                       <section>
-                                          <a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
+                                          <a href="#" className="image featured"><img src="" alt="" /></a>
                                           <header>
                                               <h3>Awareness makes the world a better place</h3>
                                           </header>
@@ -207,9 +206,9 @@ function Home() {
                                       </section>
                               </div>
   
-                              <div class="col-4 col-6-medium col-12-small">
+                              <div className="col-4 col-6-medium col-12-small">
                                       <section>
-                                          <a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
+                                          <a href="#" className="image featured"><img src="" alt="" /></a>
                                           <header>
                                               <h3>Everyone deserves help</h3>
                                           </header>
@@ -218,10 +217,10 @@ function Home() {
                                       </section>
                               </div>
   
-                              <div class="col-12">
-                                  <ul class="actions">
+                              <div className="col-12">
+                                  <ul className="actions">
                                       {/*redirect to Help page?*/}
-                                      <li><a href="#" class="button icon solid fa-file">Learn More</a></li>
+                                      <li><a href="#" className="button icon solid fa-file">Learn More</a></li>
                                   </ul>
                               </div>
                           </div>
@@ -230,7 +229,7 @@ function Home() {
   
                   {/*Banner (Quote)*/}
                   <section id="banner">
-                      <div class="container">
+                      <div className="container">
                       <p><em><strong>"The greatest blessings of mankind are within us and within our reach. 
                               A wise man is content with his lot, whatever it may be, 
                               without wishing for what he has not" — Seneca</strong></em></p>
@@ -239,14 +238,14 @@ function Home() {
   
                   {/*Main (Why Mental Health section) */}
                   <section id="main">
-                      <div class="container">
-                          <div class="row">
-                                  <div id="content" class="col-8 col-12-medium">
-                                          <article class="box post">
+                      <div className="container">
+                          <div className="row">
+                                  <div id="content" className="col-8 col-12-medium">
+                                          <article className="box post">
                                               <header>
                                                   <h2>What can <strong>Mental Health Assistant</strong> do for me?</h2>
                                               </header>
-                                              <a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
+                                              <a href="#" className="image featured"><img src="" alt="" /></a>
                                               <h3></h3>
                                               <p>Mental Health is here to provide you insightful tools to help you with your 
                                                   healing process! :) This web app includes a journal to log your emotions, which has 
@@ -255,16 +254,16 @@ function Home() {
                                                   through a chatbox on the screen! It can do many things, like helping you find what you need ,
                                                   do mood checks, remind you to write logs in your journal, and give you daily
                                                   positive affirmations!</p>
-                                              <ul class="actions">
-                                                  <li><a href="#" class="button icon solid fa-file">Continue Reading</a></li>
+                                              <ul className="actions">
+                                                  <li><a href="#" className="button icon solid fa-file">Continue Reading</a></li>
                                               </ul>
                                           </article>
   
-                                          <article class="box post">
+                                          <article className="box post">
                                           <header>
                                                   <h2><a href="#">About the makers of <strong>Mental Health Assistant</strong></a></h2>
-                                              </header>
-                                              <a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
+                                              </header>/
+                                              <a href="#" className="image featured"><img src="" alt="" /></a>
                                               <h3>This project was made possible by MLH Fellowship!</h3>
                                               <p>This final project... blah blah blah</p>
                                               <spacer></spacer>
@@ -272,16 +271,16 @@ function Home() {
   
                                   </div>
   
-                                  <div id="sidebar" class="col-4 col-12-medium">
+                                  <div id="sidebar" className="col-4 col-12-medium">
   
                                           <section>
-                                              <ul class="divided">
+                                              <ul className="divided">
                                                   <li>
   
-                                                          <article class="box excerpt">
+                                                          <article className="box excerpt">
                                                           <h2>Updates</h2>
                                                               <header>
-                                                                  <span class="date">Aug 8, 2021</span>
+                                                                  <span className="date">Aug 8, 2021</span>
                                                                   <h3><a href="#">Sprint 1</a></h3>
                                                               </header>
                                                               <p>Created Login, Home, and Help pages (frontend), which connect to a database (backend)...</p>
@@ -290,9 +289,9 @@ function Home() {
                                                   </li>
                                                   <li>
   
-                                                          <article class="box excerpt">
+                                                          <article className="box excerpt">
                                                               <header>
-                                                                  <span class="date">Aug 13, 2021</span>
+                                                                  <span className="date">Aug 13, 2021</span>
                                                                   <h3><a href="#">Sprint 2</a></h3>
                                                               </header>
                                                               <p>Lorem ipsum dolor odio facilisis convallis. Etiam non nunc vel est
@@ -302,9 +301,9 @@ function Home() {
                                                   </li>
                                                   <li>
   
-                                                          <article class="box excerpt">
+                                                          <article className="box excerpt">
                                                               <header>
-                                                                  <span class="date">Aug 20, 2021</span>
+                                                                  <span className="date">Aug 20, 2021</span>
                                                                   <h3><a href="#">Sprint 3</a></h3>
                                                               </header>
                                                               <p>Lorem ipsum dolor odio facilisis convallis. Etiam non nunc vel est
@@ -319,12 +318,12 @@ function Home() {
                       </div>
   
                       <h2><span>Meet the Team!</span></h2>
-                      <div class="row aln-center">
-                          <div class="col-4 col-6-medium col-12-small">
+                      <div className="row aln-center">
+                          <div className="col-4 col-6-medium col-12-small">
                               
                                   <section>
                                       
-                                      <span class="image featured"><img src={AngelynPFP} alt="" /></span>
+                                      <span className="image featured"><img src={AngelynPFP} alt="" /></span>
                                       <header>
                                           <h3>Angelyn Domingo</h3>
                                       </header>
@@ -332,9 +331,9 @@ function Home() {
                                   </section>
   
                           </div>
-                          <div class="col-4 col-6-medium col-12-small">
+                          <div className="col-4 col-6-medium col-12-small">
                                   <section>
-                                      <span class="image featured"><img src={TracyPFP} alt="" /></span>
+                                      <span className="image featured"><img src={TracyPFP} alt="" /></span>
                                       <header>
                                           <h3>Tracy Dong</h3>
                                       </header>
@@ -343,10 +342,10 @@ function Home() {
                                   </section>
   
                           </div>
-                          <div class="col-4 col-6-medium col-12-small">
+                          <div className="col-4 col-6-medium col-12-small">
   
                                   <section>
-                                      <span class="image featured"><img src={ViPFP} alt="" /></span>
+                                      <span className="image featured"><img src={ViPFP} alt="" /></span>
                                       <header>
                                           <h3>Vi Pham</h3>
                                       </header>
@@ -360,64 +359,64 @@ function Home() {
   
                   {/*Footer*/}
                   <section id="footer">
-                      <div class="container">
+                      <div className="container">
                           <header>
                               <h2>Questions or comments? <strong>Get in touch:</strong></h2>
                           </header>
-                          <div class="row">
-                              <div class="col-6 col-12-medium">
+                          <div className="row">
+                              <div className="col-6 col-12-medium">
                                   <section>
                                       <form method="post" action="#">
-                                          <div class="row gtr-50">
-                                              <div class="col-6 col-12-small">
+                                          <div className="row gtr-50">
+                                              <div className="col-6 col-12-small">
                                                   <input name="name" placeholder="Name" type="text" />
                                               </div>
-                                              <div class="col-6 col-12-small">
+                                              <div className="col-6 col-12-small">
                                                   <input name="email" placeholder="Email" type="text" />
                                               </div>
-                                              <div class="col-12">
+                                              <div className="col-12">
                                                   <textarea name="message" placeholder="Message"></textarea>
                                               </div>
-                                              <div class="col-12">
-                                                  <a href="#" class="form-button-submit button icon solid fa-envelope">Send Message</a>
+                                              <div className="col-12">
+                                                  <a href="#" className="form-button-submit button icon solid fa-envelope">Send Message</a>
                                               </div>
                                           </div>
                                       </form>
                                   </section>
                               </div>
-                              <div class="col-6 col-12-medium">
+                              <div className="col-6 col-12-medium">
                                   <section>
                                       <p>Erat lorem ipsum veroeros consequat magna tempus lorem ipsum consequat Phaselamet
                                       mollis tortor congue. Sed quis mauris sit amet magna accumsan tristique. Curabitur
                                       leo nibh, rutrum eu malesuada.</p>
-                                      <div class="row">
-                                          <div class="col-6 col-12-small">
-                                              <ul class="icons">
-                                                  <li class="icon solid fa-home">
+                                      <div className="row">
+                                          <div className="col-6 col-12-small">
+                                              <ul className="icons">
+                                                  <li className="icon solid fa-home">
                                                       1234 Somewhere Road<br />
                                                       Nashville, TN 00000<br />
                                                       USA
                                                   </li>
-                                                  <li class="icon solid fa-phone">
+                                                  <li className="icon solid fa-phone">
                                                       (000) 000-0000
                                                   </li>
-                                                  <li class="icon solid fa-envelope">
+                                                  <li className="icon solid fa-envelope">
                                                       <a href="#">info@untitled.tld</a>
                                                   </li>
                                               </ul>
                                           </div>
-                                          <div class="col-6 col-12-small">
-                                              <ul class="icons">
-                                                  <li class="icon brands fa-twitter">
+                                          <div className="col-6 col-12-small">
+                                              <ul className="icons">
+                                                  <li className="icon brands fa-twitter">
                                                       <a href="#">@untitled</a>
                                                   </li>
-                                                  <li class="icon brands fa-instagram">
+                                                  <li className="icon brands fa-instagram">
                                                       <a href="#">instagram.com/untitled</a>
                                                   </li>
-                                                  <li class="icon brands fa-dribbble">
+                                                  <li className="icon brands fa-dribbble">
                                                       <a href="#">dribbble.com/untitled</a>
                                                   </li>
-                                                  <li class="icon brands fa-facebook-f">
+                                                  <li className="icon brands fa-facebook-f">
                                                       <a href="#">facebook.com/untitled</a>
                                                   </li>
                                               </ul>
@@ -427,8 +426,8 @@ function Home() {
                               </div>
                           </div>
                       </div>
-                      <div id="copyright" class="container">
-                          <ul class="links">
+                      <div id="copyright" className="container">
+                          <ul className="links">
                               <li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
                           </ul>
                       </div>
