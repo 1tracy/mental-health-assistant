@@ -7,10 +7,10 @@ function Nav() {
         <nav id="">
             <ul className="nav-links">
                 <Link to='/resources'>
-                    <button className="">Resources</button>
+                <button className="">Home</button>
                 </Link>
                 <Link to='/'>
-                    <button className="">Home</button>
+                <button className="">Help</button>
                 </Link>
             </ul>
         </nav>
