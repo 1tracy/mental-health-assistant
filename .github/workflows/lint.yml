@@ -12,9 +12,8 @@ on:
 
 jobs:
   eslint:
+    eslint_dir: frontend/
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - uses: stefanoeb/eslint-action@1.0.2
-        with:
-          eslint_dir: frontend/
