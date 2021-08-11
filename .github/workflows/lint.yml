@@ -1,19 +1,11 @@
-name: Lint
-
-on:
-  # Trigger the workflow on push or pull request,
-  # but only for the main/master branch
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-
+name: CI
+on: push
 jobs:
-  eslint:
+  build:
     runs-on: ubuntu-latest
-    eslint_dir: frontend/
     steps:
-      - uses: actions/checkout@v1
-      - uses: stefanoeb/eslint-action@1.0.2
+      - uses: actions/checkout@v2
+      - name: Install modules
+        run: yarn
+      - name: Run ESLint
+        run: eslint . --ext .js,.jsx,.ts,.tsx
