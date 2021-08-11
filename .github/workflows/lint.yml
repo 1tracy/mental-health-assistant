@@ -1,12 +1,17 @@
-name: Lint
+name: CI
 
-on: [push]
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
-  eslint:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: stefanoeb/eslint-action@1.0.2
-        with:
-          files: frontend/
+      - uses: actions/checkout@v2
+      - name: Install modules
+        run: npx
+      - name: Run ESLint
+        run: eslint . --ext .js,.jsx
