@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 import AngelynPFP from "../images/AngelynPFP.jpg";
 import TracyPFP from "../images/TracyPFP.jpg";
 import ViPFP from "../images/ViPFP.jfif";
+import hearthug from "../images/heart-hug.png";
+import empathy from "../images/empathy.png";
+import help from "../images/help.png";
 
 function Home() {
     const [placeholder, setPlaceholder] = useState('Hi');
@@ -188,7 +191,7 @@ function Home() {
                         <div class="row aln-center">
                             <div class="col-4 col-6-medium col-12-small">
                                 <section>
-                                    <a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+                                <span class="image featured"><img src={hearthug} alt="" /></span>
                                     <header>
                                         <h3>Your emotional well-being</h3>
                                     </header>
@@ -199,7 +202,7 @@ function Home() {
                             </div>
                             <div class="col-4 col-6-medium col-12-small">
                                 <section>
-                                    <a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
+                                <span class="image featured"><img src={empathy} alt="" /></span>
                                     <header>
                                         <h3>Awareness saves lives</h3>
                                     </header>
@@ -210,7 +213,7 @@ function Home() {
                             </div>
                             <div class="col-4 col-6-medium col-12-small">
                                 <section>
-                                    <a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
+                                    <span class="image featured"><img src={help} alt="" /></span>
                                     <header>
                                         <h3>Everyone deserves help</h3>
                                     </header>
@@ -248,7 +251,7 @@ function Home() {
                                     <header>
                                         <h2>What can <strong>Mental Health Assistant</strong> do for me?</h2>
                                     </header>
-                                    <a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
+                                    {/*<span class="image featured"><img src={hearthug} alt="" /></span>*/}
                                     <p>Mental Health is here to provide you insightful tools to help you with your 
                                     healing process! :) This web app includes a journal to log your emotions, which has 
                                     (or, we intend to add) sentimental analysis and can detect your mood based on what 
@@ -281,7 +284,7 @@ function Home() {
                                                     <span class="date">Aug 8, 2021</span>
                                                     <h3><a href="#">Sprint 1</a></h3>
                                             </header>
-                                            <p>Created Login, Home, and Help pages (frontend), which connect to a database (backend)...</p>
+                                            <p>Created Login, Home, Help, and Journal pages!</p>
                                         </article>
                                     </li>
                                     <li>
@@ -290,8 +293,7 @@ function Home() {
                                                 <span class="date">Aug 13, 2021</span>
                                                 <h3><a href="#">Sprint 2</a></h3>
                                             </header>
-                                            <p>Lorem ipsum dolor odio facilisis convallis. Etiam non nunc vel est
-                                            suscipit convallis non id orci lorem ipsum sed magna consequat feugiat lorem dolore.</p>
+                                            <p>... coming soon!</p>
                                         </article>
                                     </li>
                                     <li>
@@ -300,8 +302,7 @@ function Home() {
                                                 <span class="date">Aug 20, 2021</span>
                                                 <h3><a href="#">Sprint 3</a></h3>
                                             </header>
-                                            <p>Lorem ipsum dolor odio facilisis convallis. Etiam non nunc vel est
-                                            suscipit convallis non id orci lorem ipsum sed magna consequat feugiat lorem dolore.</p>
+                                            <p>... coming soon!</p>
                                         </article>
                                     </li>
                                 </ul>
