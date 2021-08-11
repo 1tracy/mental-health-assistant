@@ -1,6 +1,8 @@
 import React from 'react';
 import '../App.css';
-import Image from '../images/pic04.jpg';
+
+import community from "../images/community.png";
+
 
 function Help() {
     return(
@@ -18,22 +20,6 @@ function Help() {
                     <div className="container">
                         <h1 id="logo"><a href="index.html">Mental Health Assistant</a></h1>
                         <p>A project by Angelyn, Tracy, and Vi.</p>
-                        <nav id="nav">
-                            <ul>
-                                <li><a className="icon solid fa-home" href="index.html"><span>Home</span></a></li>	
-                                <li>
-                                    <a href="#" className="icon fa-chart-bar"><span>Home</span></a>
-                                    <ul>
-                                        <li><a href="#">What & Why Mental Health?</a></li>
-                                        <li><a href="#">What does Mental Health Assistant do?</a></li>
-                                        <li><a href="#">About Us</a></li>
-                                    </ul>
-                                </li>
-                                <li><a className="icon solid fa-retweet" href="right-sidebar.html"><span>Journal</span></a></li>
-                                <li><a className="icon solid fa-retweet" href="right-sidebar.html"><span>Help</span></a></li>
-                                <li><a className="icon solid fa-sitemap" href="no-sidebar.html"><span>Login</span></a></li>
-                            </ul>
-                        </nav>
                     </div>
                 </section>
 
@@ -45,40 +31,34 @@ function Help() {
 									<header>
 										<h2><strong>Need more help?</strong> Checkout these resources that the team collected! (We think maybe one of them can make you smile. :) )</h2>
 									</header>
-									<span className="image featured"><img src={Image} alt="" /></span>
-			
+									<span class="image featured"><img src={community} alt="" /></span>
 									<h3>More facts about Mental Health from health organizations</h3>
-										<p>
-											<a href="https://www.mentalhealth.gov/">https://www.mentalhealth.gov/</a><br/>
+										<p><a href="https://www.mentalhealth.gov/">https://www.mentalhealth.gov/</a><br/>
 											<a href="https://adaa.org/">https://adaa.org/</a><br/>
-											<a href="https://adaa.org/understanding-anxiety/generalized-anxiety-disorder-gad/myths-realities/">https://adaa.org/understanding-anxiety/generalized-anxiety-disorder-gad/myths-realities/</a><br/>
-										</p>
-										
-										<h3>People to talk to</h3>
-										<p>
-											<a href="https://www.betterhelp.com/" >https://www.betterhelp.com/</a><br/>
+											<a href="https://adaa.org/understanding-anxiety/generalized-anxiety-disorder-gad/myths-realities/">https://adaa.org/understanding-anxiety/generalized-anxiety-disorder-gad/myths-realities/</a><br/></p>
+									<br/><br/>
+									<h3>People to talk to</h3>
+										<p><a href="https://www.betterhelp.com/" >https://www.betterhelp.com/</a><br/>
 											<a href="https://www.militaryonesource.mil/confidential-help/non-medical-counseling/military-onesource/military-counseling-for-stress/">
 												https://www.militaryonesource.mil/confidential-help/non-medical-counseling/military-onesource/military-counseling-for-stress/</a><br/>
 											<a href="https://www.reddit.com/r/depression/">https://www.reddit.com/r/depression/</a><br/>
 											<a href="https://www.reddit.com/r/DecidingToBeBetter/">https://www.reddit.com/r/DecidingToBeBetter/</a><br/>
-											<a href="https://www.reddit.com/r/selfimprovement/">https://www.reddit.com/r/selfimprovement/</a><br/>
-										</p>
-										
-										<h3>Funny stuff</h3>
-										<p>
-											<a href="https://youtube.com/playlist?list=PLcCMVUeUKe-En0MKMPndFxA3CCuBbrW4V">
+											<a href="https://www.reddit.com/r/selfimprovement/">https://www.reddit.com/r/selfimprovement/</a><br/></p>
+									<br/><br/>
+									<h3>Funny stuff</h3>
+										<p><a href="https://youtube.com/playlist?list=PLcCMVUeUKe-En0MKMPndFxA3CCuBbrW4V">
 												https://youtube.com/playlist?list=PLcCMVUeUKe-En0MKMPndFxA3CCuBbrW4V</a><br/>
 											<a href="https://www.reddit.com/r/wholesomegifs/">https://www.reddit.com/r/wholesomegifs/</a><br/>
-											<a href="https://www.reddit.com/r/aww/">https://www.reddit.com/r/aww/</a><br/>
-										</p>
+											<a href="https://www.reddit.com/r/aww/">https://www.reddit.com/r/aww/</a><br/></p>
+									<br/><br/>
 								</article>
 							</div>
 						</div>
 					</div>
 				</section>
 
-				<section id="footer">
-					<div className="container">
+				{/*<section id="footer">
+					<div class="container">
 						<header>
 							<h2>Questions or comments? <strong>Get in touch:</strong></h2>
 						</header>
@@ -150,7 +130,7 @@ function Help() {
 							<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 						</ul>
 					</div>
-				</section>
+	</section> */}
 		</div>
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.dropotron.min.js"></script>
