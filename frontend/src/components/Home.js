@@ -11,7 +11,6 @@ import help from "../images/help.png";
 import mlhBanner from "../images/mlh.png";
 
 function Home() {
-    const [placeholder, setPlaceholder] = useState('Hi');
     const [userVal, setUserVal] = useState('');
     const [passwordVal, setPasswordVal] = useState('');
     const [postId, setPostId] = useState(0);
