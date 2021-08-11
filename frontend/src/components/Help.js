@@ -18,22 +18,6 @@ function Help() {
                     <div class="container">
                         <h1 id="logo"><a href="index.html">Mental Health Assistant</a></h1>
                         <p>A project by Angelyn, Tracy, and Vi.</p>
-                        <nav id="nav">
-                            <ul>
-                                <li><a class="icon solid fa-home" href="index.html"><span>Home</span></a></li>	
-                                <li>
-                                    <a href="#" class="icon fa-chart-bar"><span>Home</span></a>
-                                    <ul>
-                                        <li><a href="#">What & Why Mental Health?</a></li>
-                                        <li><a href="#">What does Mental Health Assistant do?</a></li>
-                                        <li><a href="#">About Us</a></li>
-                                    </ul>
-                                </li>
-                                <li><a class="icon solid fa-retweet" href="right-sidebar.html"><span>Journal</span></a></li>
-                                <li><a class="icon solid fa-retweet" href="right-sidebar.html"><span>Help</span></a></li>
-                                <li><a class="icon solid fa-sitemap" href="no-sidebar.html"><span>Login</span></a></li>
-                            </ul>
-                        </nav>
                     </div>
                 </section>
 
