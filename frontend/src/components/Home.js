@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../App.css';
+import { Link } from 'react-router-dom';
 
 import AngelynPFP from "../images/AngelynPFP.jpg";
 import TracyPFP from "../images/TracyPFP.jpg";
@@ -190,7 +191,7 @@ function Home() {
                                           </header>
                                           <p>According to <a target="_blank" href="https://www.mentalhealth.gov/basics/what-is-mental-health"><u><strong>MentalHealth.gov</strong></u></a>, 
                                           if you experience mental health problems, your thinking, mood, and behavior could be affected. 
-                                          But mental health problems are common, and there's always help available. :)</p>
+                                          But mental health problems are common, and <strong>there's always help available</strong>. :)</p>
                                       </section>
                               </div>
   
@@ -198,7 +199,7 @@ function Home() {
                                       <section>
                                           <a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
                                           <header>
-                                              <h3>Awareness makes the world a better place</h3>
+                                              <h3>Awareness saves lives</h3>
                                           </header>
                                           <p>One of the best ways to spread love in the world is learning how to be empathetic of others,
                                               which means that it knowing what kinds of mental health problems people might be going through could make a big difference,
@@ -221,7 +222,7 @@ function Home() {
                               <div class="col-12">
                                   <ul class="actions">
                                       {/*redirect to Help page?*/}
-                                      <li><a href="#" class="button icon solid fa-file">Learn More</a></li>
+                                      <Link to='/resources'><button className="">Learn More</button></Link>
                                   </ul>
                               </div>
                           </div>

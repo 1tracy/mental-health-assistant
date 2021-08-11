@@ -6,10 +6,10 @@ function Nav() {
     return (
         <nav id="">
             <ul className="nav-links">
-                <Link to='/resources'>
+                <Link to='/'>
                 <button className="">Home</button>
                 </Link>
-                <Link to='/'>
+                <Link to='/resources'>
                 <button className="">Help</button>
                 </Link>
             </ul>
