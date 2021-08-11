@@ -1,7 +1,6 @@
 #!/bin/sh
 flask db migrate
 flask db upgrade
-
 if [ "$FLASK_ENV" = "development" ]
 then
   echo "Running Flask Development Server"
