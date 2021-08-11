@@ -1,9 +1,23 @@
 version: "3"
 services:
+  frontend:
+    container_name: react
+    build: frontend
+    command: ["npm", "start"]
+    restart: always
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./frontend:/frontend
+      - node-modules:/frontend/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
   backend:
     container_name: backend
     ports:
-      - 5000:5000
+      - 5000:80
     build: backend
     restart: always
     environment:
