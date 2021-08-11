@@ -78,6 +78,6 @@ Run react
 
 ```bash
 $ yarn start (for development)
-$ yarn start (for production)
+$ yarn build (for production)
 $ npm start
 ```
