@@ -29,4 +29,4 @@ jobs:
           docker build ./backend && docker build ./frontend
 
       - name: Start Containers
-        run: docker up
+        run: docker-compose up
