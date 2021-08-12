@@ -38,6 +38,14 @@ class UserModel(db.Model):
 
 @app.route('/api/register', methods=('GET', 'POST'))
 def register():
+    print(request.headers['authorization'])
+    encoded = request.headers['authorization']
+    data = base64.b64decode(encoded).decode("utf-8")
+    print('/login')
+    print("encoded data was: " + data)
+    print("username is " + data.split(':')[0])
+    print("password is: " + data.split(':')[1])
+    
     if request.method == 'POST':
         content = request.json
         print(content)
