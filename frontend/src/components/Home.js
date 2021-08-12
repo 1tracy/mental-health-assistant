@@ -60,7 +60,9 @@ function Home() {
     const registerNewUser = () => {
         const requestData = {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
+            headers: {
+                'Authorization' : btoa(userVal+':'+passwordVal),
+                'Content-Type': 'application/json'},
             body: JSON.stringify({username: userVal, password: passwordVal})
         };
         fetch(API_ADDRESS+'api/register', requestData)
