@@ -58,15 +58,19 @@ function Home() {
     }
     
     const registerNewUser = () => {
-        const requestData = {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({username: userVal, password: passwordVal})
-        };
-        fetch(API_ADDRESS+'api/register', requestData)
-            .then(response=>response.json())
-          .then(data => setapiResponse(data.response));
-        console.log(apiResponse);
+        if (userVal !== '' && passwordVal!== '') {
+            const requestData = {
+                method: 'POST',
+                headers: {
+                    'Authorization' : btoa(userVal+':'+passwordVal),
+                    'Content-Type': 'application/json'},
+                body: JSON.stringify({username: userVal, password: passwordVal})
+            };
+            fetch(API_ADDRESS+'api/register', requestData)
+                .then(response=>response.json())
+            .then(data => setapiResponse(data.response));
+            console.log(apiResponse);
+        }
     }
 
     // Retrieving Data After Login
