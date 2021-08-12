@@ -56,7 +56,19 @@ function Home() {
         console.log(userVal, passwordVal);
         setPostId(postId + 1);
     }
-  
+    
+    const registerNewUser = () => {
+        const requestData = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({username: userVal, password: passwordVal})
+        };
+        fetch(API_ADDRESS+'api/register', requestData)
+            .then(response=>response.json())
+          .then(data => setapiResponse(data.response));
+        console.log(apiResponse);
+    }
+
     // Retrieving Data After Login
     const [journalLogs, setJournalLogs] = useState([]);
     const [journalContent, setJournalContent] = useState("");
@@ -176,6 +188,7 @@ function Home() {
                                 <input type="text" ref={passwordInput} onChange={event => setPasswordVal(event.target.value)}/>
                                 <br/>
                                 <button type="button" onClick={submitCredentials}>Login/Create Account</button>
+                                <button type="button" onClick={registerNewUser}>Register New User</button>
                                 <p>{apiResponse}</p>
                             </div>
                         </section>
