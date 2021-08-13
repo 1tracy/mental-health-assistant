@@ -14,6 +14,8 @@ services:
       - "3000:3000"
     depends_on:
       - backend
+    networks:
+      - nginx_frontend_network
 
   backend:
     container_name: backend
@@ -29,6 +31,9 @@ services:
       - ./backend:/backend
     depends_on:
       - db
+    networks:
+      - nginx_backend_network
+      - backend_network
 
   db:
     container_name: mhaDb
@@ -38,6 +43,8 @@ services:
       - ./backend/.env
     volumes:
       - userdatabase:/var/lib/postgresql/data
+    networks:
+      - backend_network
 
   nginx:
     container_name: nginx
@@ -46,8 +53,16 @@ services:
     ports:
       - "8000:80"
     volumes: 
-    - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - nginx_frontend_network
+      - nginx_backend_network
 
 volumes:
   node-modules:
   userdatabase:
+
+networks:
+  nginx_frontend_network:
+  nginx_backend_network:
+  backend_network:
