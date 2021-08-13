@@ -18,7 +18,7 @@ function Home() {
     const userInput = useRef('');
     const passwordInput = useRef('');
     const [loggedIn, setLoggedIn] = useState(false);
-    const API_ADDRESS = "http://localhost:5000/";
+    const API_ADDRESS = "http://18.234.80.164:5000/";
   
     useEffect(() => {
       setapiResponse("")
