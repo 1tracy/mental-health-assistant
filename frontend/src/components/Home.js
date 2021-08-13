@@ -79,6 +79,7 @@ function Home() {
     const [dateSelected, setDateSelected] = useState("");
     const [logsUpdateTracker, setUpdateTracker] = useState(true);
     const [todayJournal, setTodayJournal] = useState("");
+    const [todayTitle, setTodayTitle] = useState("");
   
     useEffect(() => {
       // retrieve list of all dates that the user has journals for
@@ -120,7 +121,11 @@ function Home() {
                 'Authorization' : btoa(userVal+':'+passwordVal),
                 'Content-Type': 'application/json'
             },
-        body: JSON.stringify({logs: todayJournal, user: userVal}),
+        body: JSON.stringify({
+            body: todayJournal, 
+            user: userVal,
+            title: todayTitle
+            }),
         })
         .then(response => response.json())
         .then(data => {
@@ -160,6 +165,12 @@ function Home() {
                     <p>{journalContent}</p>
                     {dateSelected === 'Today' && (
                         <div>
+                            <textarea 
+                                type="text"
+                                value={todayTitle}
+                                onChange={ e => setTodayTitle(e.target.value)}
+                                rows = '1'
+                                />
                             <textarea 
                                 type="text"
                                 value={todayJournal}
