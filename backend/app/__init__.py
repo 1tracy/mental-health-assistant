@@ -112,6 +112,10 @@ def login():
 def say_hello_world():
     return {'result': "Hello World"}
 
+@app.route('/api/hello')
+def say_hello_world():
+    return {'result': "Hello World, backend working"}
+
 # @app.route('/login', methods=['POST'])
 # def login():
 #     print(request)
