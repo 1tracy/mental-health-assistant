@@ -36,6 +36,7 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        run: npm i eslint
 
       - name: Run linters
         uses: wearerequired/lint-action@v1.10.0
@@ -44,7 +45,7 @@ jobs:
           flake8: true
           black_dir: backend/app/
           flake8_args: "backend/app/ --max-line-length=100"
-          eslint_dir: /frontend/src/
+          eslint_dir: frontend/src/
           eslint: true
           prettier: true
           stylelint: true
