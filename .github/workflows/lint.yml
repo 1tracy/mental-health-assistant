@@ -27,6 +27,14 @@ jobs:
       - name: Install Python dependencies
         run: pip install black flake8
 
+      - name: Set up Node JS
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Install dependencies
+        run: npm ci
+
       - name: Run linters
         uses: wearerequired/lint-action@v1.10.0
         with:
@@ -34,3 +42,6 @@ jobs:
           flake8: true
           black_dir: backend/app/
           flake8_args: "backend/app/ --max-line-length=100"
+          eslint: true
+          prettier: true
+          stylelint: true
