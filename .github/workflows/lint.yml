@@ -34,7 +34,8 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-        eslint_dir: /frontend/src/
+        with:
+          eslint_dir: /frontend/src/
 
       - name: Run linters
         uses: wearerequired/lint-action@v1.10.0
