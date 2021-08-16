@@ -79,6 +79,7 @@ def create():
         print(content["title"])
         title = content["title"]
 
+
         body = content["body"]
         error = None
         if not title:
@@ -93,9 +94,9 @@ def create():
             db.session.commit()
             return {"response": f"{title} posted successfully"}
 
-    return "create journals"
+    return {"response": error}
 
-
+  
 @app.route("/api/register", methods=("GET", "POST"))
 def register():
     if request.method == "POST":
@@ -165,18 +166,6 @@ def login():
 #     return {"result": "Hello World"}
 
 
-# @app.route('/api/hello')
-# def say_hello_world():
-#     return {'result': "Hello World, backend working"}
-
-# @app.route('/login', methods=['POST'])
-# def login():
-#     print(request)
-#     content = request.json
-#
-#     print(content['username'], content['password'])
-#     return (content['username'], content['password'])
-
 # retrieve journal data
 @app.route("/api/logs")
 def get_logs():
@@ -220,21 +209,3 @@ def get_dates():
     for date in date_column:
         output.append({"day": date})
     return {"response": output}
-
-
-# save today's journal
-@app.route("/api/savetoday", methods=["POST"])
-def save_today():
-    content = request.json
-    print(request.headers["authorization"])
-    encoded = request.headers["authorization"]
-    data = base64.b64decode(encoded).decode("utf-8")
-    print("encoded data was: " + data)
-    print("/savetoday")
-    print("username is " + data.split(":")[0])
-    print("password is: " + data.split(":")[1])
-
-    print(content["logs"])
-    print(content["user"])
-    # save content['logs'] to db
-    return {"response": "success"}
