@@ -5,7 +5,8 @@
 - git
 - python 3
 - pip
-- npm
+- node
+- docker (optional)
 
 ## Installation
 
@@ -23,7 +24,7 @@ OR if you don't have docker..
 Create and python virtual environment
 
 ```bash
-$ python -m venv venv
+$ python3 -m venv venv
 ```
 
 Start virtual environment using venv
@@ -40,25 +41,10 @@ Windows:
 > venv\Scripts\activate
 ```
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install all dependencies
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install all dependencies. Make sure to install latest version!
 
 ```bash
-$ pip install -r requirements.txt
-```
-
-## Usage
-
-Use developement .env file
-Linux/MacOS:
-
-```bash
-$ cp example.env .env
-```
-
-Windows:
-
-```cmd
-$ copy example.env .env
+$ pip install -r ./backend/requirements.txt
 ```
 
 Start flask development server
