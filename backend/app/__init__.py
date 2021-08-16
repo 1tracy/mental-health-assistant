@@ -23,7 +23,7 @@ app.config[
     table=os.getenv("POSTGRES_DB"),
 )
 
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
@@ -42,6 +42,7 @@ class UserModel(db.Model):
 
     def __repr__(self):
         return f"<User {self.username}>"
+
 
 class Journal(db.Model):
     __tablename__ = "journal"
@@ -66,6 +67,7 @@ class Journal(db.Model):
     #         "created_at": self.created_at,
     #     }
 
+
 @app.route("/api/savetoday", methods=("GET", "POST"))
 def create():
     if request.method == "POST":
@@ -76,7 +78,7 @@ def create():
         print("title:")
         print(content["title"])
         title = content["title"]
-        error = ''
+
 
         body = content["body"]
         error = None
@@ -85,13 +87,16 @@ def create():
         elif not body:
             error = "You need to write the content"
         else:
-            new_journal = Journal(title, content, username)
+            user = UserModel.query.filter_by(username=username).first()
+            userID = user.userID
+            new_journal = Journal(title=title, body=body, author_ID=userID)
             db.session.add(new_journal)
             db.session.commit()
             return {"response": f"{title} posted successfully"}
 
     return {"response": error}
 
+  
 @app.route("/api/register", methods=("GET", "POST"))
 def register():
     if request.method == "POST":
@@ -156,38 +161,35 @@ def login():
     return "not implemented"
 
 
-
-
-@app.route('/hello')
-def say_hello_world():
-    return {'result': "Hello World"}
+# @app.route("/hello")
+# def say_hello_world():
+#     return {"result": "Hello World"}
 
 
 # retrieve journal data
-@app.route('/api/logs')
+@app.route("/api/logs")
 def get_logs():
-   
 
-    date1 = request.args.get('date') # date = Month-Day format "username-August-3"
-    date = date1.split('-', 1)[1]
-    user = date1.split('-', 1)[0]
+    date1 = request.args.get("date")  # date = Month-Day format "username-August-3"
+    date = date1.split("-", 1)[1]
+    user = date1.split("-", 1)[0]
 
-    
     # print(request.headers['authorization'])
-    encoded = request.headers['authorization']
+    encoded = request.headers["authorization"]
     data = base64.b64decode(encoded).decode("utf-8")
-    print('/logs')
+    print("/logs")
     print("encoded data was: " + data)
-    print("username is " + data.split(':')[0])
-    print("password is: " + data.split(':')[1])
+    print("username is " + data.split(":")[0])
+    print("password is: " + data.split(":")[1])
 
     # retrieve journal logs associated with that date here
     sample_response = {
-        'August-2' : 'Sample Journal Log \n Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        'August-3' : 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. ',
-        'August-4' : ' Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?'
+        "August-2": "Sample Journal Log \n Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "August-3": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. ",
+        "August-4": " Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
     }
-    return {'response': sample_response[date]}
+    return {"response": sample_response[date]}
+
 
 # retrieve journal dates
 @app.route("/api/dates")
@@ -207,4 +209,3 @@ def get_dates():
     for date in date_column:
         output.append({"day": date})
     return {"response": output}
-
