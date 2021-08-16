@@ -5,17 +5,23 @@ from flask_cors import CORS
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-
+from datetime import datetime
 import base64
+from sqlalchemy import ForeignKey
+from sqlalchemy.orm import relationship
+
 app = Flask(__name__)
 CORS(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://{user}:{passwd}@{host}:{port}/{table}'.format(
-    user=os.getenv('POSTGRES_USER'),
-    passwd=os.getenv('POSTGRES_PASSWORD'),
-    host=os.getenv('POSTGRES_HOST'),
+app.config[
+    "SQLALCHEMY_DATABASE_URI"
+] = "postgresql+psycopg2://{user}:{passwd}@{host}:{port}/{table}".format(
+    user=os.getenv("POSTGRES_USER"),
+    passwd=os.getenv("POSTGRES_PASSWORD"),
+    host=os.getenv("POSTGRES_HOST"),
     port=5432,
-    table=os.getenv('POSTGRES_DB'))
+    table=os.getenv("POSTGRES_DB"),
+)
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -24,87 +30,131 @@ migrate = Migrate(app, db)
 
 
 class UserModel(db.Model):
-    __tablename__ = 'users'
+    __tablename__ = "users"
+    userID = db.Column(db.Integer(), primary_key=True)
+    username = db.Column(db.String(), unique=True, nullable=False)
+    password = db.Column(db.String(), nullable=False)
 
-    username = db.Column(db.String(), primary_key=True)
-    password = db.Column(db.String())
-
-    def __init__(self, username, password):
-        self.username = username
-        self.password = password
+    # def __init__(self, userID, username, password):
+    #     self.userID = userID
+    #     self.username = username
+    #     self.password = password
 
     def __repr__(self):
         return f"<User {self.username}>"
 
-@app.route('/api/register', methods=('GET', 'POST'))
+class Journal(db.Model):
+    __tablename__ = "journal"
+
+    postId = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(50), nullable=False)
+    body = db.Column(db.Text, nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
+    author_ID = db.Column(db.Integer, db.ForeignKey("users.userID"), nullable=False)
+    rela = db.relationship("UserModel", backref="post", lazy=True)
+
+    def __repr__(self):
+        return "<Post %r>" % self.title
+
+    # def serialize(self):
+    #     return {
+    #         "id": self.id,
+    #         "author": self.author,
+    #         "title": self.title,
+    #         "body": self.body,
+    #         "created_at": self.created_at,
+    #     }
+
+@app.route("/api/savetoday", methods=("GET", "POST"))
+def create():
+    if request.method == "POST":
+        encoded = request.headers["authorization"]
+        data = base64.b64decode(encoded).decode("utf-8")
+        username = data.split(":")[0]
+        content = request.json
+        print("title:")
+        print(content["title"])
+        title = content["title"]
+        error = ''
+
+        body = content["body"]
+        error = None
+        if not title:
+            error = "You need to enter the title"
+        elif not body:
+            error = "You need to write the content"
+        else:
+            new_journal = Journal(title, content, username)
+            db.session.add(new_journal)
+            db.session.commit()
+            return {"response": f"{title} posted successfully"}
+
+    return {"response": error}
+
+@app.route("/api/register", methods=("GET", "POST"))
 def register():
-    print(request.headers['authorization'])
-    encoded = request.headers['authorization']
-    data = base64.b64decode(encoded).decode("utf-8")
-    print('/login')
-    print("encoded data was: " + data)
-    print("username is " + data.split(':')[0])
-    print("password is: " + data.split(':')[1])
-    
-    if request.method == 'POST':
+    if request.method == "POST":
         content = request.json
         print(content)
-        username = content['username']
-        password = content['password']
+        name = content["username"]
+        pw = content["password"]
         error = None
 
-        if not username:
-            error = 'Username is required.'
-        elif not password:
-            error = 'Password is required.'
-        elif UserModel.query.filter_by(username=username).first() is not None:
-            error = f"User {username} is already registered."
+        if not name:
+            error = "Username is required."
+        elif not pw:
+            error = "Password is required."
+        elif UserModel.query.filter_by(username=name).first() is not None:
+            error = f"User {name} is already registered."
 
         if error is None:
-            new_user = UserModel(username, generate_password_hash(password))
+            new_user = UserModel(username=name, password=generate_password_hash(pw))
             db.session.add(new_user)
             db.session.commit()
-            return {"response" : f"User {username} created successfully"}
+            return {"response": f"User {name} created successfully"}
         else:
-            return {"response" : error}
-    return 'not implemented'
+            return {"response": error}
+    return "not implemented"
 
 
-@app.route('/api/login', methods=('GET', 'POST'))
+@app.route("/api/login", methods=("GET", "POST"))
 def login():
-    print(request.headers['authorization'])
-    encoded = request.headers['authorization']
-    data = base64.b64decode(encoded).decode("utf-8")
-    print('/login')
-    print("encoded data was: " + data)
-    print("username is " + data.split(':')[0])
-    print("password is: " + data.split(':')[1])
+    # #print(request.headers['authorization'])
+    # encoded = request.headers['authorization']
+    # data = base64.b64decode(encoded).decode("utf-8")
+    # print('/login')
+    # print("encoded data was: " + data)
+    # print("username is " + data.split(':')[0])
+    # print("password is: " + data.split(':')[1])
 
-    return {'response' : 'Login Successful'}
-    # the rest of the code does not run
-    if request.method == 'POST':
+    # return {'response' : 'Login Successful'}
+    # # the rest of the code does not run
 
+    if request.method == "POST":
         content = request.json
-        print(content['username'])
-        username = content['username']
-        password = content['password']
+        print(content["username"])
+        username = content["username"]
+        password = content["password"]
         error = None
-        
-        print([username, password])
-        # return {"response" : "Login Successful"}
 
-        #user = UserModel.query.filter_by(username=username).first()
-        user = None
+        print([username, password])
+        user = UserModel.query.filter_by(username=username).first()
+        print(user)
         if user is None:
-            error = 'Incorrect username.'
+            error = "Incorrect username."
         elif not check_password_hash(user.password, password):
-            error = 'Incorrect password.'
+            error = "Incorrect password."
 
         if error is None:
             return {"response": "Login Successful"}
+
         else:
             return {"response": error}
-    return 'not implemented'
+
+        print("gfffg")
+    return "not implemented"
+
 
 
 
@@ -112,17 +162,6 @@ def login():
 def say_hello_world():
     return {'result': "Hello World"}
 
-# @app.route('/api/hello')
-# def say_hello_world():
-#     return {'result': "Hello World, backend working"}
-
-# @app.route('/login', methods=['POST'])
-# def login():
-#     print(request)
-#     content = request.json
-#
-#     print(content['username'], content['password'])
-#     return (content['username'], content['password'])
 
 # retrieve journal data
 @app.route('/api/logs')
@@ -151,37 +190,21 @@ def get_logs():
     return {'response': sample_response[date]}
 
 # retrieve journal dates
-@app.route('/api/dates')
+@app.route("/api/dates")
 def get_dates():
-    print(request.headers['authorization'])
-    encoded = request.headers['authorization']
+    print(request.headers["authorization"])
+    encoded = request.headers["authorization"]
     data = base64.b64decode(encoded).decode("utf-8")
     print("encoded data was: " + data)
     print("/dates")
-    print("username is " + data.split(':')[0])
-    print("password is: " + data.split(':')[1])
+    print("username is " + data.split(":")[0])
+    print("password is: " + data.split(":")[1])
 
-    user = request.args.get('user')
+    user = request.args.get("user")
     print(user)
     date_column = ["August 4", "August 3", "August 2"]
     output = []
     for date in date_column:
-        output.append({"day":date})
-    return {'response': output}
+        output.append({"day": date})
+    return {"response": output}
 
-# save today's journal
-@app.route('/api/savetoday', methods=['POST'])
-def save_today():
-    content = request.json
-    print(request.headers['authorization'])
-    encoded = request.headers['authorization']
-    data = base64.b64decode(encoded).decode("utf-8")
-    print("encoded data was: " + data)
-    print("/savetoday")
-    print("username is " + data.split(':')[0])
-    print("password is: " + data.split(':')[1])
-
-    print(content['logs'])
-    print(content['user'])
-    # save content['logs'] to db
-    return {'response': 'success'}
