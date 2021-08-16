@@ -86,7 +86,9 @@ def create():
         elif not body:
             error = "You need to write the content"
         else:
-            new_journal = Journal(title, content, username)
+            user = UserModel.query.filter_by(username=username).first()
+            userID = user.userID
+            new_journal = Journal(title=title, body=body, author_ID=userID)
             db.session.add(new_journal)
             db.session.commit()
             return {"response": f"{title} posted successfully"}
@@ -158,14 +160,14 @@ def login():
     return "not implemented"
 
 
-@app.route("/hello")
-def say_hello_world():
-    return {"result": "Hello World"}
+# @app.route("/hello")
+# def say_hello_world():
+#     return {"result": "Hello World"}
 
 
-@app.route('/api/hello')
-def say_hello_world():
-    return {'result': "Hello World, backend working"}
+# @app.route('/api/hello')
+# def say_hello_world():
+#     return {'result': "Hello World, backend working"}
 
 # @app.route('/login', methods=['POST'])
 # def login():
