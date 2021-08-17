@@ -18,10 +18,19 @@ function Home() {
     const userInput = useRef('');
     const passwordInput = useRef('');
     const [loggedIn, setLoggedIn] = useState(false);
-    const API_ADDRESS = "http://54.88.61.255:5000/";
+    //const API_ADDRESS = "http://54.88.61.255:5000/";
+    const API_ADDRESS = 'http://localhost:5000/';
+
   
     useEffect(() => {
       setapiResponse("")
+      //const loggedInUser = localStorage.getItem('user')
+      //if (loggedInUser) {
+        //const foundUser = JSON.parse(loggedInUser);
+        //setUserVal(foundUser['username']);
+        //setPasswordVal(foundUser['password']);
+        //console.log(foundUser);
+        //setLoggedIn(true);
     }, [])
     // Authentication Functions
     useEffect(() => {
@@ -39,6 +48,7 @@ function Home() {
         console.log(apiResponse);
         if (apiResponse === "Login Successful") {
             setLoggedIn(true);
+            //localStorage.setItem('user', {username : userVal, password : passwordVal});
         }
     }, [postId])
   
@@ -48,6 +58,7 @@ function Home() {
         setUserVal("");
         setPasswordVal("");
         setapiResponse("");
+        localStorage.clear();
     }
   
     const submitCredentials = () => {
