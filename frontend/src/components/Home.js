@@ -24,14 +24,18 @@ function Home() {
   
     useEffect(() => {
       setapiResponse("")
-      //const loggedInUser = localStorage.getItem('user')
-      //if (loggedInUser) {
-        //const foundUser = JSON.parse(loggedInUser);
-        //setUserVal(foundUser['username']);
-        //setPasswordVal(foundUser['password']);
-        //console.log(foundUser);
-        //setLoggedIn(true);
+      const loggedInUser = localStorage.getItem('username');
+      const loggedInPassword = localStorage.getItem('password');
+      if (loggedInUser && loggedInPassword) {
+        setUserVal(loggedInUser);
+        setPasswordVal(loggedInPassword);
+        console.log(loggedInUser);
+        console.log("user is " + userVal);
+
+        setLoggedIn(true);
+      }
     }, [])
+
     // Authentication Functions
     useEffect(() => {
         const requestData = {
@@ -48,7 +52,8 @@ function Home() {
         console.log(apiResponse);
         if (apiResponse === "Login Successful") {
             setLoggedIn(true);
-            //localStorage.setItem('user', {username : userVal, password : passwordVal});
+             localStorage.setItem('username', userVal);
+             localStorage.setItem('password', passwordVal);
         }
     }, [postId])
   
@@ -479,12 +484,6 @@ function Home() {
                     </div>
                 </section> */}
             </div>
-            <script src="assets/js/jquery.min.js"></script>
-            <script src="assets/js/jquery.dropotron.min.js"></script>
-            <script src="assets/js/browser.min.js"></script>
-            <script src="assets/js/breakpoints.min.js"></script>
-            <script src="assets/js/util.js"></script>
-            <script src="assets/js/main.js"></script>
         </div> )}
     </>
     )

@@ -8,8 +8,7 @@ services:
     environment:
       - NODE_ENV=development
     volumes:
-      - ./frontend:/frontend
-      - node-modules:/frontend/node_modules
+      - ./frontend/src:/frontend/src
     ports:
       - "3000:3000"
     depends_on:
@@ -52,14 +51,13 @@ services:
     restart: always
     ports:
       - "8000:80"
-    volumes: 
+    volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
     networks:
       - nginx_frontend_network
       - nginx_backend_network
 
 volumes:
-  node-modules:
   userdatabase:
 
 networks:
