@@ -1,69 +1,39 @@
 # Mental Health Assistant
 
+Hello! Mental Health Assistant is a tool to help people struggling with health issues have a safe space to share their thoughts in a secure and personal manner.
+
 ## Pre-requisites
 
 - git
 - python 3
 - pip
 - node
-- docker (optional)
+- docker
+
+## Tech Stack Used
+
+Flask (Python), React (JS), PostgreSQL
 
 ## Installation
 
 Clone and cd to repo
 
-Use developement .env file in **backend** folder
+Use developement .env file in **backend** folder.
 
 ```bash
 $ cp ./backend/example.env ./backend/.env
+```
+
+Initialize db using the command while in the backend folder:
+
+```bash
+$ flask db init
+```
+
+Start the containers in the root folder using:
+
+```bash
 $ docker-compose up
 ```
 
-OR if you don't have docker..
-
-Create and python virtual environment
-
-```bash
-$ python3 -m venv venv
-```
-
-Start virtual environment using venv
-
-Linux/MacOS:
-
-```bash
-$ source venv/bin/activate
-```
-
-Windows:
-
-```cmd
-> venv\Scripts\activate
-```
-
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install all dependencies. Make sure to install latest version!
-
-```bash
-$ pip install -r ./backend/requirements.txt
-```
-
-Start flask development server
-
-```bash
-$ flask run
-```
-
-Install node_modules
-
-```bash
-$ cd frontend
-$ npm install
-```
-
-Run react
-
-```bash
-$ yarn start (for development)
-$ yarn build (for production)
-$ npm start
-```
+## Contributing
