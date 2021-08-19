@@ -18,11 +18,24 @@ function Home() {
     const userInput = useRef('');
     const passwordInput = useRef('');
     const [loggedIn, setLoggedIn] = useState(false);
-    const API_ADDRESS = "http://localhost:5000/";
+    //const API_ADDRESS = "http://54.88.61.255:5000/";
+    const API_ADDRESS = 'http://localhost:5000/';
 
+  
     useEffect(() => {
-        setapiResponse("")
+      setapiResponse("")
+      const loggedInUser = localStorage.getItem('username');
+      const loggedInPassword = localStorage.getItem('password');
+      if (loggedInUser && loggedInPassword) {
+        setUserVal(loggedInUser);
+        setPasswordVal(loggedInPassword);
+        console.log(loggedInUser);
+        console.log("user is " + userVal);
+
+        setLoggedIn(true);
+      }
     }, [])
+
     // Authentication Functions
     useEffect(() => {
         const requestData = {
@@ -39,6 +52,8 @@ function Home() {
         console.log(apiResponse);
         if (apiResponse === "Login Successful") {
             setLoggedIn(true);
+             localStorage.setItem('username', userVal);
+             localStorage.setItem('password', passwordVal);
         }
     }, [postId])
 
@@ -48,6 +63,7 @@ function Home() {
         setUserVal("");
         setPasswordVal("");
         setapiResponse("");
+        localStorage.clear();
     }
 
     const submitCredentials = () => {
@@ -473,15 +489,9 @@ function Home() {
                         </ul>
                     </div>
                 </section> */}
-                    </div>
-                    <script src="assets/js/jquery.min.js"></script>
-                    <script src="assets/js/jquery.dropotron.min.js"></script>
-                    <script src="assets/js/browser.min.js"></script>
-                    <script src="assets/js/breakpoints.min.js"></script>
-                    <script src="assets/js/util.js"></script>
-                    <script src="assets/js/main.js"></script>
-                </div>)}
-        </>
+            </div>
+        </div> )}
+    </>
     )
 }
 

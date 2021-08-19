@@ -68,6 +68,7 @@ class Journal(db.Model):
         }
 
 
+
 @app.route("/api/savetoday", methods=("GET", "POST"))
 def create():
     if request.method == "POST":
