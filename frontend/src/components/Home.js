@@ -19,7 +19,7 @@ function Home() {
     const passwordInput = useRef('');
     const [loggedIn, setLoggedIn] = useState(false);
     //const API_ADDRESS = "http://54.88.61.255:5000/";
-    const API_ADDRESS = 'http://localhost:5000/';
+    const API_ADDRESS = '/';
 
   
     useEffect(() => {
