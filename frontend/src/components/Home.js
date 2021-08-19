@@ -118,7 +118,7 @@ function Home() {
     function retrieveJournalData(e) {
         // retrieve one day's journal data
         if (e.target.value !== 'Today') {
-            let formatted_date = API_ADDRESS + 'api/logs?date=' + userVal + '-' + e.target.value.replace(' ', '-');
+            let formatted_date = API_ADDRESS + 'api/logs?date=' + e.target.value.replace(' ', '-');
             fetch(formatted_date, {
                 headers: {
                     'Authorization': btoa(userVal + ':' + passwordVal),
