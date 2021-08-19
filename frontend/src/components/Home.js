@@ -108,7 +108,6 @@ function Home() {
         })
             .then(response => response.json())
             .then(data => {
-                debugger
                 if (data && data.response) {
                     setJournalLogs(data.response)
                 }
