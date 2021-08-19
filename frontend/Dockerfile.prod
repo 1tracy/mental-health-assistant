@@ -1,0 +1,13 @@
+FROM node:14-alpine AS builder
+RUN mkdir /frontend
+WORKDIR /frontend
+
+COPY package*.json .
+RUN npm install
+
+COPY . .
+
+RUN npm run build
+
+FROM nginx
+COPY --from=builder /frontend/build /usr/share/nginx/html
