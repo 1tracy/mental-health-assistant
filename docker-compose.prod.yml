@@ -12,8 +12,6 @@ services:
       - NODE_ENV=development
     volumes:
       - ./frontend/src:/frontend/src
-    ports:
-      - "3000:3000"
     depends_on:
       - backend
     networks:
@@ -21,8 +19,6 @@ services:
 
   backend:
     container_name: backend
-    ports:
-      - "5000:80"
     build: backend
     restart: always
     environment:
@@ -54,6 +50,8 @@ services:
     container_name: nginx
     image: jonasal/nginx-certbot:latest
     restart: unless-stopped
+    env_file:
+      - ./nginx-certbot.env
     ports:
       - "80:80"
       - "443:443"
