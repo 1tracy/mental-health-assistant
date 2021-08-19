@@ -174,7 +174,7 @@ function Home() {
                         <h1>Welcome {userVal}!</h1>
                     </section>
 
-                    <select onChange={retrieveJournalData}>
+                    <select defaultValue="Today" onChange={retrieveJournalData}>
                         <option> Today </option>
                         {journalLogs && journalLogs.map((log) =>
                             <option key={log["day"]} value={log["day"]}>{log["day"]} Journal</option>
