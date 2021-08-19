@@ -2,7 +2,7 @@ FROM node:14-alpine
 RUN mkdir /frontend
 WORKDIR /frontend
 
-COPY package.json /frontend/package.json
+COPY package*.json ./
 RUN npm install
 
 COPY . .
