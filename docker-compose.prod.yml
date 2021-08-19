@@ -61,7 +61,7 @@ services:
       - "443:443"
     volumes:
       - nginx_secrets:/etc/letsencrypt
-      - ./nginx/nginx-conf.conf:/etc/nginx/user_conf.d/default.conf:ro
+      - ./nginx/nginx.conf:/etc/nginx/user_conf.d/default.conf:ro
     networks:
       - nginx_frontend_network
       - nginx_backend_network
