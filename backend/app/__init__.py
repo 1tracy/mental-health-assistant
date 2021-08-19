@@ -55,53 +55,67 @@ class Journal(db.Model):
     author_ID = db.Column(db.Integer, db.ForeignKey("users.userID"), nullable=False)
     rela = db.relationship("UserModel", backref="post", lazy=True)
 
-    def __repr__(self):
-        return "<Post %r>" % self.title
+    # def __repr__(self):
+    #     return "<Post %r>" % self.title
 
-    # def serialize(self):
-    #     return {
-    #         "id": self.id,
-    #         "author": self.author,
-    #         "title": self.title,
-    #         "body": self.body,
-    #         "created_at": self.created_at,
-    #     }
+    def serialize(self):
+        return {
+            "id": self.id,
+            "author_ID": self.author,
+            "title": self.title,
+            "body": self.body,
+            "created_at": self.created_at,
+        }
+
+
 
 
 @app.route("/api/savetoday", methods=("GET", "POST"))
 def create():
     if request.method == "POST":
+        if "authorization" not in request.headers:
+            return {"error": "No authorization header detected"}, 403
+
         encoded = request.headers["authorization"]
         data = base64.b64decode(encoded).decode("utf-8")
-        username = data.split(":")[0]
-        content = request.json
-        print("title:")
-        print(content["title"])
-        title = content["title"]
+        [username, password] = data.strip().split(":")
 
+        # return {"username": username, "password": password}
 
-        body = content["body"]
+        user = UserModel.query.filter_by(username=username).first()
         error = None
-        if not title:
-            error = "You need to enter the title"
-        elif not body:
-            error = "You need to write the content"
+        if user is None:
+            error = "Incorrect username."
+        elif not check_password_hash(user.password, password):
+            error = "Incorrect password."
+
+        if error is not None:
+            error = "Invalid user"
+            return {"error": error}, 403
         else:
-            user = UserModel.query.filter_by(username=username).first()
-            userID = user.userID
-            new_journal = Journal(title=title, body=body, author_ID=userID)
-            db.session.add(new_journal)
-            db.session.commit()
-            return {"response": f"{title} posted successfully"}
+            content = request.json
+            title = content["title"]
+
+            body = content["body"]
+            error = None
+            if not title:
+                error = "You need to enter the title"
+            elif not body:
+                error = "You need to write the content"
+            else:
+                user = UserModel.query.filter_by(username=username).first()
+                userID = user.userID
+                new_journal = Journal(title=title, body=body, author_ID=userID)
+                db.session.add(new_journal)
+                db.session.commit()
+                return {"response": f"{title} posted successfully"}
 
     return {"response": error}
 
-  
 @app.route("/api/register", methods=("GET", "POST"))
 def register():
     if request.method == "POST":
         content = request.json
-        print(content)
         name = content["username"]
         pw = content["password"]
         error = None
@@ -125,27 +139,14 @@ def register():
 
 @app.route("/api/login", methods=("GET", "POST"))
 def login():
-    # #print(request.headers['authorization'])
-    # encoded = request.headers['authorization']
-    # data = base64.b64decode(encoded).decode("utf-8")
-    # print('/login')
-    # print("encoded data was: " + data)
-    # print("username is " + data.split(':')[0])
-    # print("password is: " + data.split(':')[1])
-
-    # return {'response' : 'Login Successful'}
-    # # the rest of the code does not run
-
     if request.method == "POST":
         content = request.json
-        print(content["username"])
         username = content["username"]
         password = content["password"]
         error = None
 
-        print([username, password])
         user = UserModel.query.filter_by(username=username).first()
-        print(user)
+        error = None
         if user is None:
             error = "Incorrect username."
         elif not check_password_hash(user.password, password):
@@ -157,55 +158,82 @@ def login():
         else:
             return {"response": error}
 
-        print("gfffg")
     return "not implemented"
-
-
-# @app.route("/hello")
-# def say_hello_world():
-#     return {"result": "Hello World"}
 
 
 # retrieve journal data
 @app.route("/api/logs")
 def get_logs():
+    date = request.args.get("date")  # date = d-m-y
 
-    date1 = request.args.get("date")  # date = Month-Day format "username-August-3"
-    date = date1.split("-", 1)[1]
-    user = date1.split("-", 1)[0]
+    if "authorization" not in request.headers:
+        return {"error": "No authorization header detected"}, 403
 
-    # print(request.headers['authorization'])
     encoded = request.headers["authorization"]
     data = base64.b64decode(encoded).decode("utf-8")
-    print("/logs")
-    print("encoded data was: " + data)
-    print("username is " + data.split(":")[0])
-    print("password is: " + data.split(":")[1])
+    [username, password] = data.strip().split(":")
 
-    # retrieve journal logs associated with that date here
-    sample_response = {
-        "August-2": "Sample Journal Log \n Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        "August-3": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. ",
-        "August-4": " Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
-    }
-    return {"response": sample_response[date]}
+    # return {"username": username, "password": password}
+
+    user = UserModel.query.filter_by(username=username).first()
+    error = None
+    if user is None:
+        error = "Incorrect username."
+    elif not check_password_hash(user.password, password):
+        error = "Incorrect password."
+
+    if error is not None:
+        error = "Invalid user"
+        return {"error": error}, 403
+    else:
+        userID = user.userID
+        posts = Journal.query.filter_by(author_ID=userID).all()
+
+        dataTitle = {}
+        dataContent = {}
+
+        for post in posts:
+            datetime = post.created_at
+            dateString = datetime.strftime("%d-%m-%y")
+            dataTitle[dateString] = post.title
+            dataContent[dateString] = post.body
+        return {"response": dataContent[date], "title": dataTitle[date]}
 
 
 # retrieve journal dates
 @app.route("/api/dates")
 def get_dates():
-    print(request.headers["authorization"])
+
+    if "authorization" not in request.headers:
+        return {"error": "No authorization header detected"}, 403
+
     encoded = request.headers["authorization"]
     data = base64.b64decode(encoded).decode("utf-8")
-    print("encoded data was: " + data)
-    print("/dates")
-    print("username is " + data.split(":")[0])
-    print("password is: " + data.split(":")[1])
+    [username, password] = data.strip().split(":")
 
-    user = request.args.get("user")
-    print(user)
-    date_column = ["August 4", "August 3", "August 2"]
-    output = []
-    for date in date_column:
-        output.append({"day": date})
-    return {"response": output}
+    user = UserModel.query.filter_by(username=username).first()
+    error = None
+    if user is None:
+        error = "Incorrect username."
+    elif not check_password_hash(user.password, password):
+        error = "Incorrect password."
+
+    if error is not None:
+        error = "Invalid user"
+        return {"error": error}, 403
+    else:
+        userID = user.userID
+
+        posts = Journal.query.filter_by(author_ID=userID).all()
+        data = []
+        for post in posts:
+            datetime = post.created_at
+            date = datetime.strftime("%d-%m-%y")
+            # date = datetime.split(" ")[0]
+            data.append(date)
+
+        output = []
+        for date in data:
+            output.append({"day": date})
+        print(output)
+        return {"response": output}
