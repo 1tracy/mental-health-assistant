@@ -194,7 +194,7 @@ def get_logs():
 
         for post in posts:
             datetime = post.created_at
-            dateString = datetime.strftime("%d-%m-%y")
+            dateString = datetime.strftime("%d-%m-%y %H:%M:%S")
             dataTitle[dateString] = post.title
             dataContent[dateString] = post.body
         return {"response": dataContent[date], "title": dataTitle[date]}
@@ -228,7 +228,7 @@ def get_dates():
         data = []
         for post in posts:
             datetime = post.created_at
-            date = datetime.strftime("%d-%m-%y")
+            date = datetime.strftime("%d-%m-%y %H:%M:%S")
             # date = datetime.split(" ")[0]
             data.append(date)
 
