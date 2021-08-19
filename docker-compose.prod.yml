@@ -12,6 +12,8 @@ services:
       - NODE_ENV=development
     volumes:
       - ./frontend/src:/frontend/src
+    ports:
+      - "3000:3000"
     depends_on:
       - backend
     networks:
@@ -19,6 +21,8 @@ services:
 
   backend:
     container_name: backend
+    ports:
+      - "5000:80"
     build: backend
     restart: always
     environment:
@@ -57,7 +61,7 @@ services:
       - "443:443"
     volumes:
       - nginx_secrets:/etc/letsencrypt
-      - ./nginx/nginx.conf:/etc/nginx/user_conf.d/default.conf:ro
+      - ./nginx/nginx-conf.conf:/etc/nginx/user_conf.d/default.conf:ro
     networks:
       - nginx_frontend_network
       - nginx_backend_network
