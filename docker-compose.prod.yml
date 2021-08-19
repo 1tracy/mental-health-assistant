@@ -22,8 +22,6 @@ services:
       - FLASK_ENV=development
     env_file:
       - ./backend/.env
-    volumes:
-      - ./backend:/backend
     depends_on:
       - db
     networks:
