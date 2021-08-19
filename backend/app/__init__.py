@@ -69,6 +69,7 @@ class Journal(db.Model):
 
 
 
+
 @app.route("/api/savetoday", methods=("GET", "POST"))
 def create():
     if request.method == "POST":
@@ -110,7 +111,6 @@ def create():
                 return {"response": f"{title} posted successfully"}
 
     return {"response": error}
-
 
 @app.route("/api/register", methods=("GET", "POST"))
 def register():

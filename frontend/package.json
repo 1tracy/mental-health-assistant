@@ -41,10 +41,5 @@
       "last 1 safari version"
     ]
   },
-<<<<<<< HEAD
-  "proxy": "http://127.0.0.1:5000/"
-}
-=======
   "proxy": "http://54.88.61.255:5000/"
 }
->>>>>>> main
