@@ -93,7 +93,7 @@ function Home() {
     // Retrieving Data After Login
     const [journalLogs, setJournalLogs] = useState([]);
     const [journalContent, setJournalContent] = useState("");
-    const [dateSelected, setDateSelected] = useState("");
+    const [dateSelected, setDateSelected] = useState("Today");
     const [logsUpdateTracker, setUpdateTracker] = useState(true);
     const [todayJournal, setTodayJournal] = useState("");
     const [todayTitle, setTodayTitle] = useState("");
@@ -174,7 +174,7 @@ function Home() {
                         <h1>Welcome {userVal}!</h1>
                     </section>
 
-                    <select defaultValue="Today" onChange={retrieveJournalData}>
+                    <select onChange={retrieveJournalData}>
                         <option> Today </option>
                         {journalLogs && journalLogs.map((log) =>
                             <option key={log["day"]} value={log["day"]}>{log["day"]} Journal</option>
