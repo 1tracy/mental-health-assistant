@@ -316,6 +316,11 @@ p {
   margin-bottom: 2em;
 }
 
+#helpP {
+  text-align: left;
+  margin-bottom: 2em;
+}
+
 ul,
 ol,
 dl,

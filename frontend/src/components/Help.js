@@ -33,7 +33,7 @@ function Help() {
 									</header>
 									<span class="image featured"><img src={community} alt="" /></span>
 									<h3>More facts about Mental Health from health organizations</h3>
-										<p><a href="https://www.mentalhealth.gov/">MentalHealth.gov</a><br/>
+										<p id="helpP"><a href="https://www.mentalhealth.gov/">MentalHealth.gov</a><br/>
 												<ul>
 													<li>Look here to find facts and guides to help you or others identify different kinds of disorders and how to act on them. 
 													There is also official advice from the US Department of Health and Human Services (UHH) on how to get help for all kinds of people, 
@@ -47,15 +47,15 @@ function Help() {
 												</ul>
 									<br/><br/>
 									<h3>People to talk to</h3>
-										<p><a href="https://www.betterhelp.com/" >BetterHelp</a><br/>
+										<p id="helpP"><a href="https://www.betterhelp.com/" >BetterHelp</a><br/>
 											<a href="https://www.militaryonesource.mil/confidential-help/non-medical-counseling/military-onesource/military-counseling-for-stress/">
 												Military Counseling for Stress</a><br/>
 												<ul>
 													<li>These are some free online resources if you need therapy!</li>
 												</ul>
-											<a href="https://www.reddit.com/r/depression/">https://www.reddit.com/r/depression/</a><br/>
-											<a href="https://www.reddit.com/r/DecidingToBeBetter/">https://www.reddit.com/r/DecidingToBeBetter/</a><br/>
-											<a href="https://www.reddit.com/r/selfimprovement/">https://www.reddit.com/r/selfimprovement/</a><br/></p>
+											<a href="https://www.reddit.com/r/depression/">r/depression/</a><br/>
+											<a href="https://www.reddit.com/r/DecidingToBeBetter/">r/DecidingToBeBetter/</a><br/>
+											<a href="https://www.reddit.com/r/selfimprovement/">r/selfimprovement/</a><br/></p>
 												<ul>
 												<li>These subreddits actually inspired Angelyn a lot in a time where she felt alone. Even though Reddit can sometimes be a toxic place with a wild jungle of opinions (much like Twitter), 
 													she's found communities of struggling people that actually uplift each other and help give life advice! Anonymously reaching out for help doesn't hurt if you're not quite ready to confront real people yet. And that's ok. :) 
@@ -63,15 +63,15 @@ function Help() {
 												</ul>
 									<br/><br/>
 									<h3>Funny stuff</h3>
-										<p><a href="https://youtube.com/playlist?list=PLcCMVUeUKe-En0MKMPndFxA3CCuBbrW4V">
+										<p id="helpP"><a href="https://youtube.com/playlist?list=PLcCMVUeUKe-En0MKMPndFxA3CCuBbrW4V">
 												DEPRESS BEGONE!</a><br/>
 												<ul>
 													<li>This is a Youtube playlist Angelyn made a while ago when she was a wee lad struggling in high school. This playlist aims to contain short snippets of joy to remind her
 													that there's good in this world... even if they're mostly cute cats and dogs... It's open for everyone to contribute to, so feel free to put something in there that makes YOU happy!
 													There's never enough happiness to go around, and we can only hope a YouTube playlist doesn't have a limit on videos...</li>
 												</ul>
-											<a href="https://www.reddit.com/r/wholesomegifs/">https://www.reddit.com/r/wholesomegifs/</a><br/>
-											<a href="https://www.reddit.com/r/aww/">https://www.reddit.com/r/aww/</a><br/></p>
+											<a href="https://www.reddit.com/r/wholesomegifs/">r/wholesomegifs/</a><br/>
+											<a href="https://www.reddit.com/r/aww/">r/aww/</a><br/></p>
 												<ul>
 													<li>Here are some subreddits with funny pics, gifs, and videos to help you remember the world isn't so bad after all! :) 
 													Sometimes you just need some wholesome-ness in your life to get through.</li>
