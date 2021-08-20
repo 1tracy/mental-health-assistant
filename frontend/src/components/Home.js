@@ -126,8 +126,7 @@ function Home() {
                 }
             })
                 .then(response => response.json())
-                .then(data => setJournalContent(data.response))
-                .then(data => setJournalTitle(data.title));
+                .then(data => (setJournalContent(data.response) && setJournalTitle(data.title)));
             //console.log(journalContent);
             setDateSelected(e.target.value);
         } else {
