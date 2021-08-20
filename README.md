@@ -20,6 +20,8 @@ Flask (Python), React (JS), PostgreSQL
 
 **Deployment**: We are deployed to AWS on [mentalhealthme.tech](https://mentalhealthme.tech/) using nginx reverse proxy.
 
+**AWS**: We deployed on a CentOS Stream 8 machine with t2.medium memory using the following inbound and outbound rules.
+
 ![docker ps output](./img/docker-ps-output.png)
 ![monitoring](./img/cadvisor.png)
 ![aws inbound rules](./img/aws-inbound-rules.png)
