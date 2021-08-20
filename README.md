@@ -26,6 +26,7 @@ Flask (Python), React (JS), PostgreSQL
 ![monitoring](./img/cadvisor.png)
 ![aws inbound rules](./img/aws-inbound-rules.png)
 ![aws outbound rules](./img/aws-outbound-rules.png)
+![firewall](./img/firewall.png)
 
 ## Production Engineering
 
