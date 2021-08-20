@@ -34,3 +34,4 @@ jobs:
           flake8: true
           black_dir: backend/app/
           flake8_args: "backend/app/ --max-line-length=100"
+          auto_fix: true
