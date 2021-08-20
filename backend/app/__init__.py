@@ -1,14 +1,11 @@
 import os
-from flask import Flask, request, jsonify
-from flask.wrappers import Request
+from flask import Flask, request
 from flask_cors import CORS
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from datetime import datetime
 import base64
-from sqlalchemy import ForeignKey
-from sqlalchemy.orm import relationship
 
 app = Flask(__name__)
 CORS(app)
