@@ -1,4 +1,5 @@
 import os
+from flask import Flask, request
 from flask_cors import CORS
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_sqlalchemy import SQLAlchemy

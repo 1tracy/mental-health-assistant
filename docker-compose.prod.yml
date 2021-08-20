@@ -5,13 +5,10 @@ version: "3"
 services:
   frontend:
     container_name: react
-    build: frontend
-    command: ["npm", "start"]
+    build:
+      context: frontend
+      dockerfile: Dockerfile.prod
     restart: always
-    environment:
-      - NODE_ENV=development
-    volumes:
-      - ./frontend/src:/frontend/src
     depends_on:
       - backend
     networks:
@@ -25,8 +22,6 @@ services:
       - FLASK_ENV=development
     env_file:
       - ./backend/.env
-    volumes:
-      - ./backend:/backend
     depends_on:
       - db
     networks:
