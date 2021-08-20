@@ -2,6 +2,22 @@
 
 Hello! Mental Health Assistant is a tool to help people struggling with health issues have a safe space to share their thoughts in a secure and personal manner.
 
+## Project Requirements
+
+**Web Server**: Our project has a backend API coded in Flask, as well as frontend in React. The Flask backend and React frontend have been containerized separately as well!
+
+**Database**: We have a PostgreSQL Database for our project, which is also containerized separately.
+
+**Containers**: We have five total containers (React frontend, Flask backend, nginx certbot, Postgres, and cadvisor).
+
+**CI/CD**: We use Github Actions for auto-deploying to AWS, containerizing, and linting when we make pull requests and pushes to the main branch.
+
+**Monitoring**: We use Cadvisor to monitor the state of our website.
+
+**Deployment**: We are deployed to AWS on [mentalhealthme.tech](https://mentalhealthme.tech/) using nginx reverse proxy.
+
+![docker ps output]('https://github.com/1tracy/mental-health-assistant/blob/main/docker-ps-output.png?raw=true')
+
 ## Pre-requisites
 
 - git
