@@ -33,23 +33,49 @@ function Help() {
 									</header>
 									<span class="image featured"><img src={community} alt="" /></span>
 									<h3>More facts about Mental Health from health organizations</h3>
-										<p><a href="https://www.mentalhealth.gov/">https://www.mentalhealth.gov/</a><br/>
-											<a href="https://adaa.org/">https://adaa.org/</a><br/>
-											<a href="https://adaa.org/understanding-anxiety/generalized-anxiety-disorder-gad/myths-realities/">https://adaa.org/understanding-anxiety/generalized-anxiety-disorder-gad/myths-realities/</a><br/></p>
+										<p><a href="https://www.mentalhealth.gov/">MentalHealth.gov</a><br/>
+												<ul>
+													<li>Look here to find facts and guides to help you or others identify different kinds of disorders and how to act on them. 
+													There is also official advice from the US Department of Health and Human Services (UHH) on how to get help for all kinds of people, 
+													including those who immediate help or have no insurance coverage.</li>
+												</ul>
+											<a href="https://adaa.org/">Anxiety and Depression Association of America (ADAA)</a><br/>
+											<a href="https://adaa.org/understanding-anxiety/generalized-anxiety-disorder-gad/myths-realities/">Generalized Anxiety: Myths and Realities</a><br/></p>
+												<ul>
+													<li>Sometimes it's really hard to let other people know when you're going through anxiety or depression. Especially when people tend to not know all the facts about it.
+													ADAA has an awesome infographic on how to really deal with the symptoms of Generalized Anxiety Disorder (GAD) and other tips and resources about anxiety and stress.</li>
+												</ul>
 									<br/><br/>
 									<h3>People to talk to</h3>
-										<p><a href="https://www.betterhelp.com/" >https://www.betterhelp.com/</a><br/>
+										<p><a href="https://www.betterhelp.com/" >BetterHelp</a><br/>
 											<a href="https://www.militaryonesource.mil/confidential-help/non-medical-counseling/military-onesource/military-counseling-for-stress/">
-												https://www.militaryonesource.mil/confidential-help/non-medical-counseling/military-onesource/military-counseling-for-stress/</a><br/>
+												Military Counseling for Stress</a><br/>
+												<ul>
+													<li>These are some free online resources if you need therapy!</li>
+												</ul>
 											<a href="https://www.reddit.com/r/depression/">https://www.reddit.com/r/depression/</a><br/>
 											<a href="https://www.reddit.com/r/DecidingToBeBetter/">https://www.reddit.com/r/DecidingToBeBetter/</a><br/>
 											<a href="https://www.reddit.com/r/selfimprovement/">https://www.reddit.com/r/selfimprovement/</a><br/></p>
+												<ul>
+												<li>These subreddits actually inspired Angelyn a lot in a time where she felt alone. Even though Reddit can sometimes be a toxic place with a wild jungle of opinions (much like Twitter), 
+													she's found communities of struggling people that actually uplift each other and help give life advice! Anonymously reaching out for help doesn't hurt if you're not quite ready to confront real people yet. And that's ok. :) 
+													You might also find yourself some very wholesome memes as well!</li>
+												</ul>
 									<br/><br/>
 									<h3>Funny stuff</h3>
 										<p><a href="https://youtube.com/playlist?list=PLcCMVUeUKe-En0MKMPndFxA3CCuBbrW4V">
-												https://youtube.com/playlist?list=PLcCMVUeUKe-En0MKMPndFxA3CCuBbrW4V</a><br/>
+												DEPRESS BEGONE!</a><br/>
+												<ul>
+													<li>This is a Youtube playlist Angelyn made a while ago when she was a wee lad struggling in high school. This playlist aims to contain short snippets of joy to remind her
+													that there's good in this world... even if they're mostly cute cats and dogs... It's open for everyone to contribute to, so feel free to put something in there that makes YOU happy!
+													There's never enough happiness to go around, and we can only hope a YouTube playlist doesn't have a limit on videos...</li>
+												</ul>
 											<a href="https://www.reddit.com/r/wholesomegifs/">https://www.reddit.com/r/wholesomegifs/</a><br/>
 											<a href="https://www.reddit.com/r/aww/">https://www.reddit.com/r/aww/</a><br/></p>
+												<ul>
+													<li>Here are some subreddits with funny pics, gifs, and videos to help you remember the world isn't so bad after all! :) 
+													Sometimes you just need some wholesome-ness in your life to get through.</li>
+												</ul>
 									<br/><br/>
 								</article>
 							</div>
