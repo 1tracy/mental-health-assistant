@@ -97,6 +97,7 @@ function Home() {
     const [logsUpdateTracker, setUpdateTracker] = useState(true);
     const [todayJournal, setTodayJournal] = useState("");
     const [todayTitle, setTodayTitle] = useState("");
+    const [journalTitle, setJournalTitle] = useState("")
 
     useEffect(() => {
         // retrieve list of all dates that the user has journals for
@@ -125,7 +126,8 @@ function Home() {
                 }
             })
                 .then(response => response.json())
-                .then(data => setJournalContent(data.response));
+                .then(data => setJournalContent(data.response))
+                .then(data => setJournalTitle(data.title));
             //console.log(journalContent);
             setDateSelected(e.target.value);
         } else {
@@ -183,6 +185,7 @@ function Home() {
                     {/*Journal section*/}
                     <section>
                         <h2>{dateSelected}'s Journal</h2>
+                        <h3>{journalTitle}</h3>
                         <p>{journalContent}</p>
                         {dateSelected === 'Today' && (
                             <div>
