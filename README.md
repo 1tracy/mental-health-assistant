@@ -22,6 +22,8 @@ Flask (Python), React (JS), PostgreSQL
 
 ![docker ps output](./img/docker-ps-output.png)
 ![monitoring](./img/cadvisor.png)
+![aws inbound rules](./img/aws-inbound-rules.png)
+![aws outbound rules](./img/aws-outbound-rules.png)
 
 ## Production Engineering
 
