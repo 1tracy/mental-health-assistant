@@ -225,7 +225,7 @@ function Home() {
                                         <input type="text" ref={userInput} onChange={event => setUserVal(event.target.value)} />
                                         <input type="text" ref={passwordInput} onChange={event => setPasswordVal(event.target.value)} />
                                         <br />
-                                        <button type="button" onClick={submitCredentials}>Login/Create Account</button>
+                                        <button type="button" onClick={submitCredentials}>Login</button>
                                         <button type="button" onClick={registerNewUser}>Register New User</button>
                                         <p>{apiResponse}</p>
                                     </div>
