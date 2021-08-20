@@ -16,7 +16,8 @@ Hello! Mental Health Assistant is a tool to help people struggling with health i
 
 **Deployment**: We are deployed to AWS on [mentalhealthme.tech](https://mentalhealthme.tech/) using nginx reverse proxy.
 
-![docker ps output]('https://github.com/1tracy/mental-health-assistant/blob/main/docker-ps-output.png?raw=true')
+![docker ps output]('https://github.com/1tracy/mental-health-assistant/blob/main/img/docker-ps-output.png')
+![monitoring]('https://github.com/1tracy/mental-health-assistant/blob/main/img/cadvisor.png')
 
 ## Pre-requisites
 
