@@ -397,7 +397,10 @@ function Home() {
                                         <header>
                                             <h3>Tracy Dong</h3>
                                         </header>
-                                        <p>She tied frontend and backend stuff together!</p>
+                                        <p>Tracy developed the front and back end for this project. 
+                                            She is majoring in computer science at the University of Waterloo. 
+                                            She was inspired to create this project due to the rising focus on mental health and loneliness during the pandemic, 
+                                            and wanted to motivate people to put their best foot forwards and accomplish all of their goals.</p>
                                     </section>
                                 </div>
                                 <div class="col-4 col-6-medium col-12-small">
@@ -407,7 +410,9 @@ function Home() {
                                         <header>
                                             <h3>Vi Pham</h3>
                                         </header>
-                                        <p>She originally inspired this project and did the backend stuff!</p>
+                                        <p>Vi worked on the back end of this project. She is a computer science major at the University of Richmond. 
+                                            She came up with this project in hope of providing a platform where users can take a moment to express and process their thoughts daily. 
+                                            She believes reflections play an important role in improving one's mental state and should be done more often.</p>
                                     </section>
 
                                 </div>
